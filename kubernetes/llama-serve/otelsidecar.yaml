@@ -23,6 +23,6 @@ spec:
     service:
       pipelines:
         metrics:
-          receivers: [jaeger]
+          receivers: [prometheus]
           processors: [cumulativetodelta]
           exporters: [debug]
