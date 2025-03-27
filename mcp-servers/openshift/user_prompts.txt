@@ -1,0 +1,1 @@
+"Can you delete the pod 'example' in my 'llama-serve' OpenShift namespace?"
