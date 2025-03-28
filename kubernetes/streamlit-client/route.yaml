@@ -1,15 +1,11 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: streamlit-client
+  name: streamlit
 spec:
   to:
     kind: Service
-    name: streamlit-client
-    weight: 100
-  port:
-    targetPort: 8501
-  wildcardPolicy: None
+    name: proxy
   tls:
-    termination: edge
+    termination: Reencrypt
     insecureEdgeTerminationPolicy: Redirect
