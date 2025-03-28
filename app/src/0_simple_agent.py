@@ -8,7 +8,7 @@ import logging
 import os
 from dotenv import load_dotenv
 
-from client_tool import torchtune
+from client_tools import torchtune
 
 load_dotenv()
 
