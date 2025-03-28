@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mcp-llamastack-server
+spec:
+  selector:
+    matchLabels:
+      app: mcp-llamastack-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mcp-llamastack-server
+    spec:
+      containers:
+      - name: mcp-llamastack-server
+        image: quay.io/eoconnor/mcp-llamastack-server:latest
+        ports:
+          - containerPort: 8000
+            protocol: TCP
+          - containerPort: 8080
+            protocol: TCP
+        resources: {}
