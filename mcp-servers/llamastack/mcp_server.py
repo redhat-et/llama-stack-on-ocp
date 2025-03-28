@@ -1,4 +1,5 @@
 import click
+import tempfile
 import json
 from typing import Dict, List, Optional, Any
 import anyio
@@ -13,7 +14,19 @@ class MCPOpenAPIServer:
     
     def __init__(self, spec_path: str):
         """Initialize the server with an OpenAPI specification."""
-        self.api_tools = OpenAPIToolsManager(spec_path)
+        with open(spec_path, 'r') as file:
+            spec = json.load(file)
+        
+        # Create a temporary file to save the spec as a string, note: to be removed later
+        with tempfile.NamedTemporaryFile(delete=False, mode='w', suffix='.json') as tmp_file:
+            # Write the loaded spec as a JSON string to the temporary file
+            json.dump(spec, tmp_file)
+            temp_spec_path = tmp_file.name
+        
+
+        
+
+        self.api_tools = OpenAPIToolsManager(temp_spec_path)
         self.app = Server(name="mcp-openapi-tools-and-prompts")
         self.prompt_manager = PromptManager(warn_on_duplicate_prompts=True)
         
