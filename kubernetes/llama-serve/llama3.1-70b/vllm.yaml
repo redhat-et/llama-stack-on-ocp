@@ -59,7 +59,7 @@ spec:
           image: 'vllm/vllm-openai:v0.7.3'
           args:
             - --model
-            - meta-llama/Llama-3.1-70B  # Changed from 3.2-3B-Instruct
+            - meta-llama/Llama-3.1-70B-Instruct
             - --tensor-parallel-size
             - "4"  # Use all 4 A100 GPUs
             - --gpu-memory-utilization
