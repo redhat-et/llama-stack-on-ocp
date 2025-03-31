@@ -42,7 +42,7 @@ jobs:
       - name: make the image and load it into kind
         run: |
           cd llama-stack-k8s-operator
-          make docker-build quay.io/redhat-et/llama-stack-operator:latest
+          make docker-build IMG=quay.io/redhat-et/llama-stack-operator:latest
           kind load docker-image quay.io/redhat-et/llama-stack-operator:latest --name llama-stack-cluster
           make deploy IMG=quay.io/redhat-et/llama-stack-operator:latest
           kubectl get po -A
