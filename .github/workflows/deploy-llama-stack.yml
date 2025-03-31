@@ -1,4 +1,4 @@
-name: Deploy LLaMA Stack K8s Operator
+name: Deploy Llama Stack K8s Operator
 
 on:
   push:
@@ -47,4 +47,15 @@ jobs:
           # load the tar file into kind
           kind load image-archive llama-stack-operator.tar --name llama-stack-cluster
           make deploy IMG=quay.io/redhat-et/llama-stack-operator:latest
-          kubectl get po -A
+
+      - name: Wait until the llama-stack-operator is ready
+        run: |
+          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-controller-manager -n llama-stack-system
+          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-webhook -n llama-stack-system
+
+
+      - name: Install Llama Stack Operator
+        run: |
+           cd ..
+           kubectl apply -f kubernetes/llamastack-operator/deploy.yaml
+           kubectl wait --for=condition=available --timeout=600s deployment/llamastack-operator-controller-manager -n llama-stack-system
