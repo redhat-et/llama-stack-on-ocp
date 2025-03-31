@@ -48,8 +48,9 @@ jobs:
           kind load image-archive llama-stack-operator.tar --name llama-stack-cluster
           make deploy IMG=quay.io/redhat-et/llama-stack-operator:latest
 
-      - name: Wait until the llama-stack-operator is ready
+      - name: Wait until the llama-stack-operator and namespace is ready
         run: |
+          sleep 10
           kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-controller-manager -n llama-stack-system
           kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-webhook -n llama-stack-system
 
