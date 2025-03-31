@@ -37,10 +37,11 @@ jobs:
           fetch-depth: 0
           repository: opendatahub-io/llama-stack-k8s-operator.git
           ref: main
+          path: /tmp/llama-stack-k8s-operator
 
       - name: make the image and load it into kind
         run: |
-          cd llama-stack-k8s-operator
+          cd /tmp/llama-stack-k8s-operator
           make image quay.io/redhat-et/llama-stack-operator:latest
           kind load docker-image quay.io/redhat-et/llama-stack-operator:latest --name llama-stack-cluster
           make deploy IMG=quay.io/redhat-et/llama-stack-operator:latest
