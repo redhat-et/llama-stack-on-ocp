@@ -35,8 +35,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          repository: cooktheryan/llama-stack-k8s-operator.git
-          ref: operator_pull_policy
+          repository: opendatahub-io/llama-stack-k8s-operator.git
+          ref: main
           path: llama-stack-k8s-operator
 
       - name: make the image and load it into kind
@@ -60,3 +60,4 @@ jobs:
            cd ..
            pwd
            kubectl get po -A
+           kubectl get events -n llama-stack-k8s-operator-system
