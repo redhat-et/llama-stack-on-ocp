@@ -47,7 +47,7 @@ jobs:
           podman save quay.io/redhat-et/llama-stack-operator:v1 -o llama-stack-operator.tar
           # load the tar file into kind
           kind load image-archive llama-stack-operator.tar --name llama-stack-cluster
-          make deploy IMG=quay.io/redhat-et/llama-stack-operator:latest
+          make deploy IMG=quay.io/redhat-et/llama-stack-operator:v1
 
       - name: Wait until the llama-stack-operator and namespace is ready
         run: |
