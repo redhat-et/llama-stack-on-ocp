@@ -35,8 +35,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          repository: opendatahub-io/llama-stack-k8s-operator.git
-          ref: main
+          repository: cooktheryan/llama-stack-k8s-operator.git
+          ref: operator_pull_policy
           path: llama-stack-k8s-operator
 
       - name: make the image and load it into kind
