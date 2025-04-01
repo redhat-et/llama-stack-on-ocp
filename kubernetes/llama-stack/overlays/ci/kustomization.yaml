@@ -4,8 +4,9 @@ kind: Kustomization
 resources:
 - ../../base
 
-# Remove the route and PVC for CI
+# Patches for CI environment
 patches:
+# Remove the route
 - patch: |-
     $patch: delete
     kind: Route
@@ -15,6 +16,7 @@ patches:
     kind: Route
     name: llamastack-server
 
+# Remove the PVC
 - patch: |-
     $patch: delete
     kind: PersistentVolumeClaim
@@ -24,7 +26,17 @@ patches:
     kind: PersistentVolumeClaim
     name: llamastack-llama-persist
 
-# Replace PVC with emptyDir in deployment and update configmap for CI
-patchesStrategicMerge:
-- deployment-patch.yaml
-- configmap-patch.yaml
+# Replace PVC with emptyDir in deployment
+- path: deployment-patch.yaml
+  target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: llamastack-deployment
+
+# Update configmap for CI
+- path: configmap-patch.yaml
+  target:
+    version: v1
+    kind: ConfigMap
+    name: llamastack-run-config

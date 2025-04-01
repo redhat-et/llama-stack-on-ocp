@@ -6,11 +6,7 @@ spec:
   template:
     spec:
       volumes:
-      - name: run-config-volume
-        configMap:
-          defaultMode: 420
-          name: llamastack-run-config
+      # Keep only the volumes we need to update, don't repeat the ones that stay the same
       - name: llama-persist
-        emptyDir: {}
-      - name: cache
-        emptyDir: {}
+        persistentVolumeClaim: null # This nullifies the original PVC
+        emptyDir: {} # And replaces it with emptyDir
