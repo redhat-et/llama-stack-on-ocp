@@ -59,4 +59,4 @@ jobs:
         run: |
            cd ..
            pwd
-           kubectl get po -wA
+           kubectl get po -A
