@@ -51,9 +51,7 @@ jobs:
       - name: Wait until the llama-stack-operator and namespace is ready
         run: |
           sleep 10
-          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-controller-manager -n llama-stack-k8s-operator-system
-          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-operator-webhook -n llama-stack-k8s-operator-system
-
+          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-k8s-operator-controller-manager -n llama-stack-k8s-operator-system
 
       - name: Install Llama Stack Operator
         run: |
