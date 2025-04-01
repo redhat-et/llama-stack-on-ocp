@@ -41,6 +41,7 @@ jobs:
 
       - name: make the image and load it into kind
         run: |
+          pwd
           cd llama-stack-k8s-operator
           IMG=quay.io/redhat-et/llama-stack-operator:v1 make docker-build
           podman save quay.io/redhat-et/llama-stack-operator:v1 -o llama-stack-operator.tar
@@ -51,11 +52,11 @@ jobs:
       - name: Wait until the llama-stack-operator and namespace is ready
         run: |
           sleep 10
-          kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-k8s-operator-controller-manager -n llama-stack-k8s-operator-system
+          kubectl wait --for=condition=available --timeout=60s deployment/llama-stack-k8s-operator-controller-manager -n llama-stack-k8s-operator-system
 
-      - name: Install Llama Stack Operator
+      - name: Install Llama Stack Operator and always list the pods regardless if the previous step failed
         if: always()
         run: |
            cd ..
-           kubectl apply -f kubernetes/llamastack-operator/deploy.yaml
+           pwd
            kubectl get po -wA
