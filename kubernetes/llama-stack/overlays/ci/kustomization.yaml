@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- ../../base
+
+# Remove the route and PVC for CI
+patches:
+- patch: |-
+    $patch: delete
+    kind: Route
+    metadata:
+      name: llamastack-server
+  target:
+    kind: Route
+    name: llamastack-server
+
+- patch: |-
+    $patch: delete
+    kind: PersistentVolumeClaim
+    metadata:
+      name: llamastack-llama-persist
+  target:
+    kind: PersistentVolumeClaim
+    name: llamastack-llama-persist
+
+# Replace PVC with emptyDir in deployment and update configmap for CI
+patchesStrategicMerge:
+- deployment-patch.yaml
+- configmap-patch.yaml

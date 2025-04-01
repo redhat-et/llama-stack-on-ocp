@@ -1,13 +1,12 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: llamastack-server
+  name: server
 spec:
   to:
     kind: Service
-    name: llamastack-server
+    name: server
     weight: 100
   port:
     targetPort: 8321
   wildcardPolicy: None
-

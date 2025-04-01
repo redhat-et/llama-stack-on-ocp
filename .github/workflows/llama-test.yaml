@@ -1,0 +1,45 @@
+name: Deploy Llama Stack K8s Operator
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install Kind
+        uses: helm/kind-action@v1.8.0
+        with:
+          version: v0.20.0
+          cluster_name: llama-stack-cluster
+          wait: 120s
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: deploy Llama stack
+        run: |
+            kubectl create ns llama-serve
+            kubectl apply -k kubernetes/llama-stack/overlays/ci -n llama-serve
+
+      - name: Wait for llama stack to be ready
+        run: |
+            kubectl wait --for=condition=available --timeout=600s deployment/llamastack -n llama-serve
+
+      - name: dump pods
+        if: always()
+        run: kubectl get po -A

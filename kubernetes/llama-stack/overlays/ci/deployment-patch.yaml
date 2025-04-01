@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llamastack-deployment
+spec:
+  template:
+    spec:
+      volumes:
+      - name: run-config-volume
+        configMap:
+          defaultMode: 420
+          name: llamastack-run-config
+      - name: llama-persist
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
