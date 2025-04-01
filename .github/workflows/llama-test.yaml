@@ -38,7 +38,8 @@ jobs:
 
       - name: Wait for llama stack to be ready
         run: |
-            kubectl wait --for=condition=available --timeout=600s deployment/llamastack -n llama-serve
+            sleep 5
+            kubectl wait --for=condition=available --timeout=600s deployment/llamastack-deployment -n llama-serve
 
       - name: dump pods
         if: always()
