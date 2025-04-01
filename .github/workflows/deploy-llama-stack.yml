@@ -54,6 +54,7 @@ jobs:
           kubectl wait --for=condition=available --timeout=600s deployment/llama-stack-k8s-operator-controller-manager -n llama-stack-k8s-operator-system
 
       - name: Install Llama Stack Operator
+        if: always()
         run: |
            cd ..
            kubectl apply -f kubernetes/llamastack-operator/deploy.yaml
