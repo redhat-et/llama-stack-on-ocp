@@ -26,6 +26,10 @@ jobs:
            cd mcp-servers/ansible
            curl -ssL -o submodule/mcp/ansible.py https://raw.githubusercontent.com/suppathak/mcp/refs/heads/main/ansible.py
            podman build -t quay.io/redhat-et/mcp-ansible:latest .
+
+      - name: push the ansible mcp server when merge into main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
            podman push quay.io/redhat-et/mcp-ansible:latest
 
   custom:
@@ -46,6 +50,10 @@ jobs:
         run: |
             cd mcp-servers/custom
             podman build -t quay.io/redhat-et/mcp-custom:latest .
+
+      - name: push the ansible mcp server when merge into main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
             podman push quay.io/redhat-et/mcp-custom:latest
 
   github:
@@ -66,4 +74,8 @@ jobs:
         run: |
             cd mcp-servers/github
             podman build -t quay.io/redhat-et/mcp-github:latest .
+
+      - name: push the ansible mcp server when merge into main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
             podman push quay.io/redhat-et/mcp-github:latest
