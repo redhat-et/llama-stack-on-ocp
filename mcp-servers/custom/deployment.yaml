@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: custom-mcp-server
-        image: quay.io/rh-ee-anxie/mcp-custom-server:latests
+        image: quay.io/redhat-et/mcp-custom:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 8000
             protocol: TCP

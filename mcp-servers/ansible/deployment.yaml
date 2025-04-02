@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: ansible-mcp-server
-        image: quay.io/supathak/ansible-mcp:amd-0.1.0
+        image: quay.io/redhat-et/mcp-ansible:latest
+        imagePullPolicy: Always
         ports:
           - containerPort: 8000
             protocol: TCP
