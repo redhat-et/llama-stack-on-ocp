@@ -29,9 +29,8 @@ Make sure you're logged in to your OpenShift namespace.
 
 ```bash
 # Apply AAP credentials secret
-oc apply -f aap-secret.yaml -n <namespace>
+oc apply -f ../../kubernetes/mcp-servers/ansible-mcp/ansible-aap-secret.yaml -n <namespace>
 
 # Apply deployment
-oc apply -f deployment.yaml -n <namespace>
+oc apply -f ../../kubernetes/mcp-servers/ansible-mcp/ansible-deployment.yaml -n <namespace>
 ```
-

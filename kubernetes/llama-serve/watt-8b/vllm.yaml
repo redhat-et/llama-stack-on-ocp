@@ -5,7 +5,7 @@ metadata:
   labels:
     app: watt-8b
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       app: watt-8b
@@ -70,8 +70,6 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      nodeSelector:
-        kubernetes.io/hostname: wrk-5
       securityContext: {}
       schedulerName: default-scheduler
   strategy:
@@ -79,4 +77,3 @@ spec:
     rollingUpdate:
       maxUnavailable: 25%
       maxSurge: 25%
-

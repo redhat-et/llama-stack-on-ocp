@@ -15,8 +15,6 @@ spec:
       labels:
         app: llama31-70b
     spec:
-      nodeSelector:
-        kubernetes.io/hostname: wrk-5
       volumes:
         - name: hf-cache
           emptyDir: {}
@@ -65,7 +63,7 @@ spec:
             - --gpu-memory-utilization
             - "0.95"  # Prevent OOM errors
             - --quantization
-            - "fp8" 
+            - "fp8"
             - --max-num-batched-tokens
             - "4096"  # Control memory usage
             - --enable-auto-tool-choice  # Keeping your tool settings
@@ -76,12 +74,10 @@ spec:
             - --port
             - "8000"
             - --swap-space
-            - "32"  
+            - "32"
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      nodeSelector:
-        kubernetes.io/hostname: wrk-5
       securityContext: {}
       schedulerName: default-scheduler
   strategy:
@@ -89,4 +85,3 @@ spec:
     rollingUpdate:
       maxUnavailable: 25%
       maxSurge: 25%
-      

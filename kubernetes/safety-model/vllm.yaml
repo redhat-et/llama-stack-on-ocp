@@ -5,7 +5,6 @@ metadata:
   labels:
     app: safety
   name: safety
-  namespace: llama-serve
 spec:
   replicas: 1
   selector:

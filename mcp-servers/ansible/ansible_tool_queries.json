@@ -1,0 +1,42 @@
+{
+  "meta": {
+    "name": "Ansible",
+    "description": "A collection of verified working queries for Ansible MCP Server.",
+    "model": "meta-llama/Llama-3.2-3B-Instruct"
+  },
+  "queries": [
+    {
+      "query": "List recent five passed jobs",
+      "tool_call": "list_recent_jobs"
+    },
+    {
+      "query": "List recent five failed jobs",
+      "tool_call": "list_recent_jobs"
+    },
+    {
+      "query": "Show me all inventories used by organization Ansible Wrangler",
+      "tool_call": "list_inventories"
+    },
+    {
+      "query": "Give me the name and description of inventory 4",
+      "tool_call": "get_inventory"
+    },
+    {
+      "query": "Give me the list of inventory in Organisation 1",
+      "tool_call": "list_inventories"
+    },
+    {
+      "query": "What job templates use by organisation id 1?",
+      "tool_call": "list_job_templates"
+    },
+    {
+      "query": "Get details of inventory id 4",
+      "tool_call": "get_inventory"
+    },
+    {
+      "query": "List the IDs of different inventories in Organization id 1",
+      "tool_call": "list_inventories"
+    }
+  ]
+}
+

@@ -2,4 +2,4 @@
 	path = submodule
 [submodule "mcp-servers/ansible/submodule/mcp"]
 	path = mcp-servers/ansible/submodule/mcp
-	url = https://github.com/cooktheryan/mcp
+	url = https://github.com/suppathak/mcp
