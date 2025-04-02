@@ -1,0 +1,45 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: llama-serve
+resources:
+  # llama-serve resources
+  - llama-serve/granite-8b/chat-template.yaml
+  - llama-serve/granite-8b/route.yaml
+  - llama-serve/granite-8b/service.yaml
+  - llama-serve/granite-8b/vllm.yaml
+  - llama-serve/llama3.1-70b/chat-template.yaml
+  - llama-serve/llama3.1-70b/route.yaml
+  - llama-serve/llama3.1-70b/service.yaml
+  - llama-serve/llama3.1-70b/vllm.yaml
+  - llama-serve/llama3.2-3b/chat-template.yaml
+  - llama-serve/llama3.2-3b/route.yaml
+  - llama-serve/llama3.2-3b/service.yaml
+  - llama-serve/llama3.2-3b/vllm.yaml
+  - llama-serve/watt-8b/chat-template.yaml
+  - llama-serve/watt-8b/route.yaml
+  - llama-serve/watt-8b/service.yaml
+  - llama-serve/watt-8b/vllm.yaml
+
+  # llama-stack resources
+  - llama-stack/configmap.yaml
+  - llama-stack/deployment.yaml
+  - llama-stack/pvc.yaml
+  - llama-stack/route.yaml
+  - llama-stack/service.yaml
+  - llama-stack/template.yaml
+
+  # safety-model resources
+  - safety-model/svc.yaml
+  - safety-model/vllm.yaml
+
+  # streamlit-client resources
+  - streamlit-client/deployment.yaml
+  - streamlit-client/route.yaml
+  - streamlit-client/service.yaml
+  - streamlit-client/serviceacount.yaml
+
+  # mcp-servers resources
+  - mcp-servers/ansible-mcp
+  - mcp-servers/custom-mcp
+  - mcp-servers/github-mcp
+  - mcp-servers/openshift-mcp

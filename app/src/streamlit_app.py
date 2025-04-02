@@ -1,6 +1,5 @@
 import streamlit as st
-from llama_stack_client.lib.agents.agent import Agent
-from llama_stack_client import LlamaStackClient, APIConnectionError
+from llama_stack_client import LlamaStackClient, Agent, APIConnectionError
 from dotenv import load_dotenv
 import os
 import uuid
@@ -46,7 +45,7 @@ with st.sidebar:
     
     active_tool_list = []
     for toolgroup_id in toolgroup_selection:
-        active_tool_list.extend([t.identifier for t in client.tools.list(toolgroup_id=toolgroup_id)])
+        active_tool_list.extend([f"{toolgroup_id[5:]}:{t.identifier}" for t in client.tools.list(toolgroup_id=toolgroup_id)])
     
     st.markdown(f"Active Tools: 🛠 {len(active_tool_list)}")
     st.json(active_tool_list)
