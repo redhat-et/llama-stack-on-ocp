@@ -1,5 +1,8 @@
 import streamlit as st
 from llama_stack_client import LlamaStackClient, Agent, APIConnectionError
+from llama_stack_client.lib.agents.react.agent import ReActAgent
+from llama_stack_client.lib.agents.react.tool_parser import ReActOutput
+from llama_stack_client.lib.agents.event_logger import EventLogger
 from dotenv import load_dotenv
 import os
 import uuid
@@ -40,6 +43,14 @@ with st.sidebar:
     st.header("Model")
     model = st.selectbox(label="models", options=model_list,index=3, on_change=reset_agent)
     
+    # Add agent type selector
+    st.header("Agent Type")
+    agent_type = st.radio(
+        "Select Agent Type",
+        ["Regular", "ReAct"],
+        on_change=reset_agent
+    )
+    
     st.header("MCP Servers")
     toolgroup_selection = st.pills(label="Available Servers",options=tool_groups_list, selection_mode="multi",on_change=reset_agent)    
     
@@ -54,12 +65,26 @@ with st.sidebar:
 
 @st.cache_resource
 def create_agent():
-    return Agent(client,
-              model=model,
-              instructions="You are a helpful assistant. When you use a tool always respond with a summary of the result.",
-              tools=toolgroup_selection,
-              sampling_params={"max_tokens":1024},
-            )
+    if agent_type == "Regular":
+        return Agent(client,
+                  model=model,
+                  instructions="You are a helpful assistant. When you use a tool always respond with a summary of the result.",
+                  tools=toolgroup_selection,
+                  sampling_params={"max_tokens":4096},
+                )
+    else:
+        # Create ReAct agent
+        return ReActAgent(
+            client=client,
+            model=model,
+            tools=toolgroup_selection,
+            instructions="You are a helpful assistant that uses reasoning to solve problems step by step. Break down complex problems into simpler steps.",
+            response_format={
+                "type": "json_schema",
+                "json_schema": ReActOutput.model_json_schema(),
+            },
+            sampling_params={"max_tokens":4096},
+        )
 
 agent = create_agent()
 
@@ -96,7 +121,40 @@ if prompt := st.chat_input(placeholder=""):
                 print(r.event.payload)
                 if r.event.payload.event_type == "step_progress":
                     if hasattr(r.event.payload.delta, "text"):
-                        yield r.event.payload.delta.text
+                        # Add a buffer to collect JSON chunks
+                        if 'json_buffer' not in st.session_state:
+                            st.session_state.json_buffer = ""
+
+                        if agent_type == "ReAct":
+                            if r.event.payload.event_type == "step_progress":
+                                # Accumulate chunks
+                                st.session_state.json_buffer += r.event.payload.delta.text
+                                # Try to parse, but don't worry if it fails (it's probably incomplete)
+                                try:
+                                    react_data = json.loads(st.session_state.json_buffer)
+                                    # Successfully parsed complete JSON
+                                    if "answer" in react_data:
+                                        yield react_data["answer"]
+                                        # Clear buffer after successful parse
+                                        st.session_state.json_buffer = ""
+                                except json.JSONDecodeError:
+                                    # Still accumulating chunks, don't yield anything yet
+                                    pass
+                            elif r.event.payload.event_type == "step_complete":
+                                # For step_complete, the complete message is available
+                                if hasattr(r.event.payload.step_details, "api_model_response"):
+                                    try:
+                                        react_data = json.loads(r.event.payload.step_details.api_model_response.content)
+                                        if "answer" in react_data:
+                                            yield react_data["answer"]
+                                        # Clear buffer
+                                        st.session_state.json_buffer = ""
+                                    except json.JSONDecodeError:
+                                        # If parsing fails, just yield what we have
+                                        yield st.session_state.json_buffer
+                                        st.session_state.json_buffer = ""
+                        else:
+                            yield r.event.payload.delta.text
                 if r.event.payload.event_type == "step_complete":
                     if r.event.payload.step_details.step_type == "tool_execution":
                         if TOOL_DEBUG:
@@ -109,7 +167,7 @@ if prompt := st.chat_input(placeholder=""):
                              yield f" 🛠 "            
             else:
                 yield f"Error occurred in the Llama Stack Cluster: {r}"
-                
+
     with st.chat_message("assistant"):
         response = st.write_stream(response_generator(turn_response))
     

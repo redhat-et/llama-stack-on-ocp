@@ -1,0 +1,22 @@
+{
+    "meta": {
+        "name": "Custom",
+        "description": "A collection of queries for Custom Server.",
+        "model": "meta-llama/Llama-3.2-3B-Instruct",
+        "note": "Each entry includes a user query and its corresponding tool function name. Useful for LLM tool selection evaluation."
+    },
+    "queries": [
+      {
+        "query": "Can you generate a number between 1 and 100?",
+        "tool_call": "generate_random_number"
+      },
+      {
+        "query": "If user's score is 70, is it approved?",
+        "tool_call": "approve_score"
+      },
+      {
+        "query": "If user's score is 25, is it approved?",
+        "tool_call": "approve_score"
+      }
+    ]
+  }
