@@ -26,35 +26,3 @@ spec:
         command: ["./kubernetes-mcp-server"]
         args: ["--sse-port", "8000"]
         resources: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: ocp-mcp-server
-  labels:
-    app: ocp-mcp-server
-spec:
-  selector:
-    app: ocp-mcp-server
-    deployment: ocp-mcp-server
-  ports:
-  - port: 8000
-    targetPort: http
-    protocol: TCP
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: ocp-mcp
----
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: ocp-mcp
-subjects:
-  - kind: ServiceAccount
-    name: ocp-mcp
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: edit

@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: github-mcp-server-with-rh-nodejs
-  namespace: llama-serve
 spec:
   replicas: 1
   selector:
@@ -15,7 +14,8 @@ spec:
     spec:
       containers:
       - name: github-mcp-server-with-rh-nodejs
-        image: quay.io/rh-ee-yuan/github_mcp_server:latest
+        image: quay.io/redhat-et/mcp-github:latest
+        imagePullPolicy: Always
         command: ["/bin/sh", "-c"]
         args:
         - |
@@ -37,16 +37,3 @@ spec:
           requests:
             cpu: "200m"
             memory: "256Mi"
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: github-mcp-server-with-rh-nodejs
-  namespace: llama-serve
-spec:
-  selector:
-    app: github-mcp-server-with-rh-nodejs
-  ports:
-  - port: 80
-    targetPort: 8080

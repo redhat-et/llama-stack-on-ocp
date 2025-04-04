@@ -14,7 +14,7 @@ You will need the following installed on your local machine:
 
 You will need to first build a container image using the `Containerfile` and can do this by using `podman`. To build the container image from the current directory:
 ```
-podman build -t github-mcp-server:latest -f Containerfile 
+podman build -t github-mcp-server:latest -f Containerfile
 ```
 If running on a Mac:
 ```
@@ -60,9 +60,9 @@ podman push quay.io/<username>/github-mcp-server:latest
 3. **Modify YAML Files**:
      - Update the provided YAML files to deploy the GitHub MCP server using the `oc` command.
      - **Steps to Modify**:
-       1. Change the project name and MCP server name to your desired values.  
-            Example:  
-            - Project name: `llama-serve`  
+       1. Change the project name and MCP server name to your desired values.
+            Example:
+            - Project name: `llama-serve`
             - MCP server name: `github-mcp-server-with-rh-nodejs`
        2. Since the deployment uses community MCP servers published on GitHub, create a `secret.yaml` file to store your personal GitHub token for accessing the MCP server Docker image.
 
@@ -74,11 +74,11 @@ podman push quay.io/<username>/github-mcp-server:latest
 4. **Deploy the MCP Server**:
      - Apply the secrets:
        ```bash
-       oc apply -f secret.yaml
+       oc apply -f ../../kubernetes/mcp-servers/github-mcp/github-secret.yaml
        ```
      - Deploy the application:
        ```bash
-       oc apply -f deployment.yaml
+       oc apply -f ../../kubernetes/mcp-servers/github-mcp/github-deployment.yaml
        ```
 
 5. **Verify Deployment**:
@@ -87,7 +87,7 @@ podman push quay.io/<username>/github-mcp-server:latest
 
 ## Test if the GitHub MCP Server is Correctly Configured
 
-1. Navigate to `0_simple_agent.py` and 
+1. Navigate to `0_simple_agent.py` and
      - copy MCP endpoint and add it to "REMOTE_MCP_URL" environment. REMOTE_MCP_URL="http://ip:port/sse"
           > **Note:** how to find mcp ip and port? go to openshift web console ![ip Image](./images/ipaddress.png)
      - register the GitHub MCP tools:
@@ -105,7 +105,7 @@ podman push quay.io/<username>/github-mcp-server:latest
 
      - Confirm that the Llama Stack agent has the GitHub MCP tools configured with `tools=["mcp::github"]`.
 
-     - Example user prompt: 
+     - Example user prompt:
        ```
        Describe https://github.com/modelcontextprotocol/servers/tree/main/src/github repository
        ```

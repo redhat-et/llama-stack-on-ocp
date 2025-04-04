@@ -75,7 +75,7 @@ oc project <your namespace>
 **Deploy the OpenShift MCP server application**:
 
 ```
-oc apply -f deployment.yaml
+oc apply -f ../../kubernetes/mcp-servers/openshift-mcp/openshift-deployment.yaml
 ```
 
 You should now see a pod running successfully in OpenShift as well as a service created for it! You should see an address created for the service in your OpenShift something like `http://172.xx.yyy.zzz:8000`.

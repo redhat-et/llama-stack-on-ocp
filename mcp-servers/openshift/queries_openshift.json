@@ -1,0 +1,30 @@
+{
+    "meta": {
+        "name": "OpenShift",
+        "description": "A collection of queries for OpenShift MCP Server.",
+        "model": "",
+        "note": "Each entry includes a user query and its corresponding tool function name. Useful for LLM tool selection evaluation."
+    },
+    "queries": [
+      {
+        "query": "What pods are running in the llama-serve namespace?",
+        "tool_call": "pods_list_in_namespace"
+      },
+      {
+        "query": "Can you delete the pod example in llama-serve namespace?",
+        "tool_call": "pods_delete"
+      },
+      {
+        "query": "Can you fetch the logs of the pod example in the llama-serve namespace?",
+        "tool_call": "pods_log"
+      },
+      {
+        "query": "Create a pod with the docker.io/hello-world image and expose port 8080 in the llama-serve namespace?",
+        "tool_call": "pods_run"
+      },
+      {
+        "query": "What are the events in llama-serve namespace??",
+        "tool_call": "events_list" 
+      }
+    ]
+  }

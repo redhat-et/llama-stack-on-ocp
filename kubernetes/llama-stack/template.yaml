@@ -2,7 +2,6 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: template
-  namespace: llama-serve
   uid: 53e66bb5-bebd-4a5d-8471-54728d3adc18
   resourceVersion: '602370800'
   creationTimestamp: '2025-02-20T18:20:10Z'

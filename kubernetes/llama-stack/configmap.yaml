@@ -36,13 +36,10 @@ data:
         provider_type: inline::sentence-transformers
         config: {}
       vector_io:
-      - provider_id: faiss
-        provider_type: inline::faiss
+      - provider_id: milvus
+        provider_type: inline::milvus
         config:
-          kvstore:
-            type: sqlite
-            namespace: null
-            db_path: ${env.SQLITE_STORE_DIR:~/.llama/distributions/remote-vllm}/faiss_store.db
+          db_path: ${env.MILVUS_DB_PATH}
       safety:
       - provider_id: llama-guard
         provider_type: inline::llama-guard

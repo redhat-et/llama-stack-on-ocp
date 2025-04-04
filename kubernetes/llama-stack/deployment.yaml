@@ -33,7 +33,9 @@ spec:
           value: http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces
         - name: OTEL_METRIC_ENDPOINT
           value: http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/metrics
-        image: llamastack/distribution-remote-vllm:0.1.8
+        - name: MILVUS_DB_PATH
+          value: 'milvus.db'
+        image: quay.io/redhat-et/llama:vllm-0.1.9
         imagePullPolicy: Always
         name: llamastack
         ports:

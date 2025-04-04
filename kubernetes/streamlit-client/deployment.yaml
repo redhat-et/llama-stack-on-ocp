@@ -31,7 +31,7 @@ spec:
         volumeMounts:
         - mountPath: /etc/tls/private
           name: proxy-tls
-      - image: quay.io/michaelclifford/streamlit_client:0.2.0
+      - image: quay.io/michaelclifford/streamlit_client:0.3.0
         imagePullPolicy: IfNotPresent
         name: streamlit-client
         ports:
@@ -40,7 +40,7 @@ spec:
         - containerPort: 8501
           protocol: TCP
         env:
-          - name: REMOTE_BASE_URL
+          - name: LLAMA_STACK_ENDPOINT
             value: 'http://llamastack-server.llama-serve.svc.cluster.local:8321'
       volumes:
       - name: proxy-tls

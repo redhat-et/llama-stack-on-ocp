@@ -78,6 +78,43 @@ podman tag localhost/distribution-remote-vllm:dev quay.io/redhat-et/llama:2-27-2
 podman push quay.io/redhat-et/llama:2-27-2025
 ```
 
+## Building Llamastack with Milvus (in-line)
+
+If you need to build Llamastack to use Milvus as the default in-line vector db provider in your container image, you can run the following steps:
+
+```
+git clone git@github.com:meta-llama/llama-stack.git
+cd llama-stack
+
+# Create the venv to install llamastack locally
+python -m venv venv
+source venv/bin/activate
+pip install -U .
+```
+
+Edit the `build.yaml` in the `llama_stack/template/remote-vllm/build.yaml` to update the `vector_io` provider field and `image_type` field as shown below:
+
+```
+  providers:
+    vector_io:
+    - inline::milvus
+image_type: container
+```
+
+Now, we can build the container.
+
+```
+export CONTAINER_BINARY = podman
+USE_COPY_NOT_MOUNT=true LLAMA_STACK_DIR=. llama stack build --config llama_stack/templates/remote-vllm/build.yaml --image-type container --image-name remote-vllm-milvus
+```
+
+Once the image is built successfully you can push it to quay:
+
+```
+podman tag localhost/remote-vllm-milvus:<version tag> quay.io/<quay user name or org name>/<image name>
+podman push quay.io/<quay user name or org/<image name>
+```
+
 Update the [`deployment.yaml`](https://github.com/redhat-et/agent-frameworks/blob/main/prototype/frameworks/llamastack/kubernetes/llama-stack/deployment.yaml#L28) file using the image generated above.
 
 ## Configmap

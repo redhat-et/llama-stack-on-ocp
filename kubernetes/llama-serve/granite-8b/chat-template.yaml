@@ -1,3 +1,4 @@
+kind: ConfigMap
 apiVersion: v1
 metadata:
   name: granite-8b-template
@@ -41,7 +42,3 @@ data:
         {{- '<|start_of_role|>assistant<|end_of_role|>' }}
         {%- endif %}
     {%- endfor %}
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  name: granite-chat
