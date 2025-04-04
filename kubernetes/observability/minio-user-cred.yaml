@@ -1,0 +1,10 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: minio-user-creds
+# TEST VALUES ONLY USED IN DEV TESTING
+stringData:
+  MINIO_ROOT_USER: test
+  MINIO_ROOT_PASSWORD: supersecret
+type: Opaque
+

@@ -1,0 +1,129 @@
+---
+apiVersion: opentelemetry.io/v1beta1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel-collector
+spec:
+  serviceAccount: otel-collector
+  config:
+    extensions:
+      bearertokenauth:
+        filename: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+
+    exporters:
+      debug:
+        verbosity: basic
+      #otlphttp/dynatrace:
+        # update endpoint and Api-Token before deploying
+        #endpoint: "https://XXXXXXX.live.dynatrace.com/api/v2/otlp"
+        #headers:
+          #Authorization: "Api-Token dxxxxxx.XXXXXXXXXXXXXXX"
+      # Export the dev tenant traces to a Tempo instance
+      otlphttp/dev:
+        endpoint: https://tempo-tempostack-gateway.observability-hub.svc.cluster.local:8080/api/traces/v1/dev
+        tls:
+          insecure: false
+          ca_file: "/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt"
+        auth:
+          authenticator: bearertokenauth
+        headers:
+          X-Scope-OrgID: "dev"
+      # cluster user-workload monitoring prometheus backend
+      #prometheus/ocp-uwm:
+      #  add_metric_suffixes: false
+      #  endpoint: 0.0.0.0:8889
+      #  metric_expiration: 180m
+      #  resource_to_telemetry_conversion:
+      #    enabled: true
+
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+            # service/vllm in ns/llama-serve
+            # add any service.ns.svc.cluster.local:port that includes a /metrics endpoint
+            # If you use otel-sidecars in each deployment, you do not need to list them here.
+            - job_name: vllm-llama-serve
+              scrape_interval: 15s
+              static_configs:
+                - targets:
+                    - 'vllm.llama-serve.svc.cluster.local:8000'
+            # service/safety in ns/llama-serve
+            - job_name: vllm-safety-serve
+              scrape_interval: 15s
+              static_configs:
+                - targets:
+                    - 'safety.llama-serve.svc.cluster.local:8000'
+      otlp:
+        protocols:
+          grpc: {}
+            #endpoint: 0.0.0.0:4317
+            #tls:
+            #  cert_file: /certs/server.crt
+            #  client_ca_file: /certs/ca.crt
+            #  key_file: /certs/server.key
+          http: {}
+            #endpoint: 0.0.0.0:4318
+            #tls:
+            #  cert_file: /certs/server.crt
+            #  client_ca_file: /certs/ca.crt
+            #  key_file: /certs/server.key
+
+    processors:
+      batch:
+        send_batch_size: 100
+        timeout: 1s
+      # cumulativetodelta necessary to export to dynatrace
+      # Dynatrace only accepts delta metrics
+      # OCP user-workload-monitoring only accepts cumulative metrics
+      #cumulativetodelta: {}
+      memory_limiter:
+        check_interval: 5s
+        limit_percentage: 95
+        spike_limit_percentage: 25
+
+    service:
+      extensions:
+      - bearertokenauth
+      pipelines:
+        metrics:
+          exporters:
+          - debug
+          #- prometheus/ocp-uwm
+          #- otlphttp/dynatrace
+          receivers:
+          - otlp
+          - prometheus
+          processors:
+          #- cumulativetodelta
+          - batch
+          - memory_limiter
+        traces:
+          exporters:
+          - debug
+          - otlphttp/dev
+          #- otlphttp/dynatrace
+          receivers:
+          - otlp
+          processors:
+          - batch
+          - memory_limiter
+      telemetry:
+        metrics:
+          address: 0.0.0.0:8888
+  ingress:
+    route:
+      termination: passthrough
+    type: route
+  mode: deployment
+  observability:
+    metrics:
+      enableMetrics: true
+  upgradeStrategy: automatic
+  #volumeMounts:
+  #- mountPath: /certs
+  #  name: mtls-certs
+  #volumes:
+  #- secret:
+  #    secretName: mtls-certs
+  #  name: mtls-certs
