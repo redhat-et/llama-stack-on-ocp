@@ -43,12 +43,19 @@ with st.sidebar:
     st.header("MCP Servers")
     toolgroup_selection = st.pills(label="Available Servers",options=tool_groups_list, selection_mode="multi",on_change=reset_agent)    
     
-    active_tool_list = []
+    grouped_tools = {}
+    total_tools = 0
     for toolgroup_id in toolgroup_selection:
-        active_tool_list.extend([f"{toolgroup_id[5:]}:{t.identifier}" for t in client.tools.list(toolgroup_id=toolgroup_id)])
-    
-    st.markdown(f"Active Tools: 🛠 {len(active_tool_list)}")
-    st.json(active_tool_list)
+        tools = client.tools.list(toolgroup_id=toolgroup_id)
+        grouped_tools[toolgroup_id] = [tool.identifier for tool in tools]
+        total_tools += len(tools)
+
+    st.markdown(f"Active Tools: 🛠 {total_tools}")
+
+    for group_id, tools in grouped_tools.items():
+        with st.expander(f"🔧 Tools from `{group_id}`"):
+            for idx, tool in enumerate(tools, start=1):
+                st.markdown(f"{idx}. `{group_id}:{tool}`")
 
     st.text_input(label="Install New Server", placeholder="MCP Server")
 
