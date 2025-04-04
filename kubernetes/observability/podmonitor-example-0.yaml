@@ -1,0 +1,20 @@
+apiVersion: monitoring.rhobs/v1
+kind: PodMonitor
+metadata:
+  name: vllm-llama-serve-monitor
+spec:
+  namespaceSelector: {}
+  podMetricsEndpoints:
+  - bearerTokenSecret:
+      key: ""
+    interval: 30s
+    path: /metrics
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - safety
+      - llama32-3b
+      - granite-8b
+      - llama31-70b
