@@ -1,68 +1,75 @@
+﻿kind: Deployment
 apiVersion: apps/v1
-kind: Deployment
 metadata:
   name: llamastack-deployment
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: llamastack
   template:
     metadata:
+      #annotations:
+      #  sidecar.opentelemetry.io/inject: otelsidecar
       labels:
         app: llamastack
     spec:
-      containers:
-      - args:
-        - --yaml-config
-        - /app-config/config.yaml
-        env:
-        - name: VLLM_MAX_TOKENS
-          value: "128000"
-        - name: INFERENCE_MODEL
-          value: meta-llama/Llama-3.2-3B-Instruct
-        - name: VLLM_URL
-          value: http://vllm:8000/v1
-        - name: VLLM_API_TOKEN
-          value: fake
-        - name:  SAFETY_MODEL
-          value: meta-llama/Llama-Guard-3-8B
-        - name:  SAFETY_VLLM_URL
-          value: http://safety.llama-serve.svc.cluster.local:8000/v1
-        - name: OTEL_TRACE_ENDPOINT
-          value: http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces
-        - name: OTEL_METRIC_ENDPOINT
-          value: http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/metrics
-        - name: MILVUS_DB_PATH
-          value: 'milvus.db'
-        image: quay.io/redhat-et/llama:vllm-0.1.9
-        imagePullPolicy: Always
-        name: llamastack
-        ports:
-        - containerPort: 8321
-          protocol: TCP
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /app-config
-          name: run-config-volume
-        - mountPath: /.llama
-          name: llama-persist
-        - mountPath: /.cache
-          name: cache
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
       volumes:
-      - configMap:
-          defaultMode: 420
-          name: run-config
-        name: run-config-volume
-      - persistentVolumeClaim:
-          claimName: llama-persist
-        name: llama-persist
-      - emptyDir: {}
-        name: cache
+        - name: run-config-volume
+          configMap:
+            name: run-config
+            defaultMode: 420
+        - name: llama-persist
+          persistentVolumeClaim:
+            claimName: llama-persist
+        - name: cache
+          emptyDir: {}
+        - name: pythain
+          emptyDir: {}
+      containers:
+        - resources: {}
+          terminationMessagePath: /dev/termination-log
+          name: llamastack
+          env:
+            - name: MAX_TOKENS
+              value: '128000'
+            - name: VLLM_MAX_TOKENS
+              value: '128000'
+            - name: LLAMA3B_MODEL
+              value: meta-llama/Llama-3.2-3B-Instruct
+            - name: GRANITE_URL
+              value: 'https://granite-8b-llama-serve.apps.ocp-beta-test.nerc.mghpcc.org/v1'
+            - name: GRANITE_MODEL
+              value: ibm-granite/granite-3.2-8b-instruct
+            - name: LLAMA3B_URL
+              value: 'https://llama32-3b-llama-serve.apps.ocp-beta-test.nerc.mghpcc.org/v1'
+            - name: VLLM_API_TOKEN
+              value: fake
+            - name: OTEL_SERVICE_NAME
+              value: om-llamastack
+            - name: OTEL_TRACE_ENDPOINT
+              value: 'http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces'
+            - name: SAFETY_MODEL
+              value: meta-llama/Llama-Guard-3-8B
+            - name: SAFETY_VLLM_URL
+              value: 'http://safety.llama-serve.svc.cluster.local:8000/v1'
+            - name: MILVUS_DB_PATH
+              value: milvus.db
+          ports:
+            - containerPort: 8321
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: pythain
+              mountPath: /pythainlp-data
+            - name: run-config-volume
+              mountPath: /app-config
+            - name: llama-persist
+              mountPath: /.llama
+            - name: cache
+              mountPath: /.cache
+          terminationMessagePolicy: File
+          image: 'quay.io/redhat-et/llama:vllm-0.1.9'
+          args:
+            - '--config'
+            - /app-config/config.yaml
+      securityContext: {}

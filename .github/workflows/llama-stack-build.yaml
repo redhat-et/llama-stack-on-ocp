@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: ci
     steps:
-      - name: Checkout code
+      - name: Checkout release tag
         uses: actions/checkout@v4
         with:
-           ref: release-${{ inputs.version }}
+           ref: v${{ inputs.version }}
            repository: meta-llama/llama-stack.git
 
       - name: python deps

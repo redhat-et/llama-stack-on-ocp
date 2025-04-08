@@ -10,6 +10,6 @@ The following scenario requires at minimum the following:
 A `kustomization.yaml` file exists to launch all required Kubernetes objects for the scenarios defined in the repository. To create run the following.
 
 ```
-oc create project llama-serve
+oc new-project llama-serve
 oc apply -k kubernetes
 ```

@@ -1,32 +1,9 @@
-kind: ConfigMap
+﻿kind: ConfigMap
 apiVersion: v1
 metadata:
   name: template
-  uid: 53e66bb5-bebd-4a5d-8471-54728d3adc18
-  resourceVersion: '602370800'
-  creationTimestamp: '2025-02-20T18:20:10Z'
   labels:
     app: vllm
-  managedFields:
-    - manager: kubectl-create
-      operation: Update
-      apiVersion: v1
-      time: '2025-02-20T18:20:10Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:data': {}
-        'f:metadata':
-          'f:labels':
-            .: {}
-            'f:app': {}
-    - manager: Mozilla
-      operation: Update
-      apiVersion: v1
-      time: '2025-02-25T18:54:13Z'
-      fieldsType: FieldsV1
-      fieldsV1:
-        'f:data':
-          'f:tool_chat_template_llama3.2_json.jinja': {}
 data:
   tool_chat_template_llama3.2_json.jinja: |
     {{- bos_token }} {%- if custom_tools is defined %}
