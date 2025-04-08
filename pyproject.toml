@@ -1,0 +1,11 @@
+[project]
+name = "llama-stack-on-ocp"
+version = "0.1.0"
+description = "llama-stack-on-ocp"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "llama-stack-client==0.1.9",
+    "python-dotenv>=1.1.0",
+    "streamlit>=1.44.1",
+]
