@@ -1,4 +1,7 @@
 # Llama Stack on OCP
+## Overview
+This document provides an overview of the architecture and deployment process for the Llama Stack on OpenShift (OCP). It demonstrates how the Llama Stack agentic framework, vLLM agents, and multiple MCP servers are interconnected and deployed within an OpenShift cluster. The architecture diagram below illustrates the logical flow and integration of these components.
+![Architecture Diagram](./images/architecture-diagram.jpg)
 
 ## Requirements
 The following scenario requires at minimum the following:
