@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: slack-mcp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: slack-mcp-server
+  template:
+    metadata:
+      labels:
+        app: slack-mcp-server
+    spec:
+      containers:
+      - name: slack-mcp-server
+        image: rh-ee-anxie/slack-mcp-server:latest
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        env:
+        - name: SLACK_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: slack-mcp-server-secrets
+              key: SLACK_BOT_TOKEN
+        - name: SLACK_TEAM_ID
+          valueFrom:
+            secretKeyRef:
+              name: slack-mcp-server-secrets
+              key: SLACK_TEAM_ID
+        resources: {}
