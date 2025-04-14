@@ -12,7 +12,7 @@ more to be continue.
 ## Folder Structure
 - `notebooks/`: Jupyter notebooks for learning RAG and agent implementation
 - `src/`: Python source files for production implementation
-- `frontend/`: Containerfile for building the streamlit UI. 
+- `frontend/`: Containerfile for building the streamlit UI.
 
 ## Getting Started
 ### 1. `notebooks/`: Start with notebooks in order
