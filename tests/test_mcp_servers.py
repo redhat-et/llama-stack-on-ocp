@@ -49,16 +49,16 @@ def setup_logger():
     logger = logging.getLogger("mcp_test")
     if logger.hasHandlers():
         logger.handlers.clear()
-    
+
     logger.setLevel(logging.INFO)
-    
+
     # Console handler
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
     console_formatter = logging.Formatter('%(message)s')
     console_handler.setFormatter(console_formatter)
     logger.addHandler(console_handler)
-    
+
     # File handler
     log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True)
@@ -67,7 +67,7 @@ def setup_logger():
     file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     file_handler.setFormatter(file_formatter)
     logger.addHandler(file_handler)
-    
+
     return logger
 
 
@@ -76,10 +76,10 @@ def load_queries(file_path: str) -> List[Dict[str, str]]:
     try:
         with open(file_path, 'r') as file:
             data = json.load(file)
-        
+
         if not isinstance(data, dict) or 'queries' not in data:
             raise ValueError(f"Invalid JSON format in {file_path}")
-        
+
         # Return full query objects with ID for better test identification
         return data['queries']
     except FileNotFoundError:
@@ -102,18 +102,18 @@ def get_query_id(query_obj):
 
 
 def register_toolgroup_if_needed(
-    client: LlamaStackClient, 
-    toolgroup_id: str, 
-    mcp_url: str, 
+    client: LlamaStackClient,
+    toolgroup_id: str,
+    mcp_url: str,
     logger: logging.Logger
 ) -> bool:
     """Register a toolgroup if it doesn't exist. Returns success status."""
     try:
         registered_tools = client.tools.list()
         registered_toolgroups = set(t.toolgroup_id for t in registered_tools)
-        
+
         logger.info(f"Available toolgroups: {registered_toolgroups}")
-        
+
         if toolgroup_id not in registered_toolgroups:
             logger.info(f"Registering toolgroup: {toolgroup_id}")
             client.toolgroups.register(
@@ -124,7 +124,7 @@ def register_toolgroup_if_needed(
             logger.info(f"Successfully registered toolgroup: {toolgroup_id}")
         else:
             logger.info(f"Toolgroup {toolgroup_id} is already registered")
-        
+
         return True
     except Exception as e:
         logger.error(f"Failed to register toolgroup {toolgroup_id}: {e}")
@@ -146,7 +146,7 @@ def execute_query(
             Whenever a tool is called, be sure return the Response in a friendly and helpful tone.
             When you are asked to search the web you must use a tool. Keep answers concise.
             """
-    
+
     # Create agent with tools
     agent = Agent(
         client,
@@ -156,7 +156,7 @@ def execute_query(
         tool_config={"tool_choice": "auto"},
         sampling_params={"max_tokens": max_tokens}
     )
-    
+
     # Create session
     session_id = agent.create_session(session_name=f"Test_{toolgroup_id}_{int(time.time())}")
 
@@ -171,13 +171,13 @@ def execute_query(
         session_id=session_id,
         stream=False
     )
-    
+
     return turn_response
 
 
 def add_metric(
-    server_type: str, 
-    model: str, 
+    server_type: str,
+    model: str,
     query_id: str,
     status: str,
     tool_call_match: bool,
@@ -188,25 +188,25 @@ def add_metric(
     # Ensure results directory exists
     results_dir = Path("results")
     results_dir.mkdir(exist_ok=True)
-    
+
     # Use a fixed CSV file name
     metrics_file = results_dir / "metrics.csv"
-    
+
     # Create file with headers if it doesn't exist
     if not metrics_file.exists():
         with open(metrics_file, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow([
-                'timestamp', 
-                'server_type', 
-                'model', 
-                'query_id', 
+                'timestamp',
+                'server_type',
+                'model',
+                'query_id',
                 'status',
                 'tool_call_match',
                 'inference_not_empty',
                 'error'
             ])
-    
+
     # Append the new metric
     with open(metrics_file, 'a', newline='') as f:
         writer = csv.writer(f)
@@ -231,12 +231,12 @@ def run_test(server_type, model, query_obj, llama_client, logger):
     expected_tool_call = query_obj['tool_call']
     tool_call_match = False
     inference_not_empty = False
-    
+
     # Skip if MCP URL is not set
     if not config["mcp_url"]:
         logger.info(f"Skipping {server_type}: MCP URL not set")
         return False
-    
+
     # Set up for the query (register toolgroup)
     if not register_toolgroup_if_needed(
         llama_client,
@@ -245,10 +245,10 @@ def run_test(server_type, model, query_obj, llama_client, logger):
         logger
     ):
         return False
-    
+
     logger.info(f"Testing query '{query_id}' for {server_type} with model {model}")
     logger.info(f"Query: {prompt[:50]}...")
-    
+
     try:
         # Execute query
         response = execute_query(
@@ -261,7 +261,7 @@ def run_test(server_type, model, query_obj, llama_client, logger):
         # Get Tool execution and Inference steps
         steps = response.steps
 
-        #Get tool used 
+        #Get tool used
         try:
             tools_used = steps[1].tool_calls[0].tool_name
         except Exception as e:
@@ -280,7 +280,7 @@ def run_test(server_type, model, query_obj, llama_client, logger):
             inference_not_empty = False
         logger.info(f'Inference not empty: {inference_not_empty}')
         logger.info(f"Query '{query_id}' succeeded with model {model} and the response \n {final_response}")
-        
+
         # Record success metrics
         add_metric(
             server_type=server_type,
@@ -290,13 +290,13 @@ def run_test(server_type, model, query_obj, llama_client, logger):
             tool_call_match=tool_call_match,
             inference_not_empty=inference_not_empty,
         )
-        
+
         return True
-        
+
     except Exception as e:
         error_msg = str(e)
         logger.error(f"Query '{query_id}' failed with model {model}: {error_msg}")
-        
+
         # Record failure metrics
         add_metric(
             server_type=server_type,
@@ -307,7 +307,7 @@ def run_test(server_type, model, query_obj, llama_client, logger):
             inference_not_empty=False,
             error=error_msg
         )
-        
+
         return False
 
 
@@ -315,50 +315,50 @@ def main():
     """Main function to run all tests."""
     # Set up logger
     logger = setup_logger()
-    
+
     # Create client
     base_url = os.getenv('REMOTE_BASE_URL')
     if not base_url:
         logger.error("REMOTE_BASE_URL environment variable not set")
         return
-    
+
     llama_client = LlamaStackClient(base_url=base_url)
-    
+
     # Define models to test
     models = ["meta-llama/Llama-3.2-3B-Instruct", "ibm-granite/granite-3.2-8b-instruct"]
-    
+
     # Get server configurations
     server_configs = get_server_configs()
-    
+
     # Track statistics
     total_tests = 0
     successful_tests = 0
-    
+
     # Loop through models (outermost loop)
     for model in models:
         logger.info(f"\n=== Testing with model: {model} ===\n")
-        
+
         # Loop through server types
         for server_type, config in server_configs.items():
             if not config["mcp_url"]:
                 logger.info(f"Skipping {server_type}: MCP URL not set")
                 continue
-            
+
             # Load queries for this server
             queries = load_queries(config["file_path"])
             if not queries:
                 logger.info(f"No queries found for {server_type}")
                 continue
-            
+
             logger.info(f"Running {len(queries)} queries for {server_type}")
-            
+
             # Loop through queries (innermost loop)
             for query_obj in queries:
                 total_tests += 1
                 success = run_test(server_type, model, query_obj, llama_client, logger)
                 if success:
                     successful_tests += 1
-    
+
     # Print summary
     logger.info(f"\n=== Test Summary ===")
     logger.info(f"Total tests: {total_tests}")
