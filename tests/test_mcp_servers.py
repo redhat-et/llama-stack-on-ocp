@@ -136,7 +136,6 @@ def execute_query(
     prompt: str,
     model: str,
     toolgroup_id: str,
-    logger: logging.Logger,
     instructions: Optional[str] = None,
     max_tokens: int = 4096
 ) -> Dict[str, Any]:
@@ -232,19 +231,18 @@ def run_test(server_type, model, query_obj, llama_client, logger):
     tool_call_match = False
     inference_not_empty = False
 
-    # Skip if MCP URL is not set
-    if not config["mcp_url"]:
-        logger.info(f"Skipping {server_type}: MCP URL not set")
-        return False
-
-    # Set up for the query (register toolgroup)
-    if not register_toolgroup_if_needed(
-        llama_client,
-        config["toolgroup_id"],
-        config["mcp_url"],
-        logger
-    ):
-        return False
+    # Register MCP URL if in config
+    if config["mcp_url"]:
+        logger.info(f"Registering {server_type}")
+        # Set up for the query (register toolgroup)
+        # If the server is not already registered or can't be registered skip
+        if not register_toolgroup_if_needed(
+            llama_client,
+            config["toolgroup_id"],
+            config["mcp_url"],
+            logger
+        ):
+            return False
 
     logger.info(f"Testing query '{query_id}' for {server_type} with model {model}")
     logger.info(f"Query: {prompt[:50]}...")
@@ -255,8 +253,7 @@ def run_test(server_type, model, query_obj, llama_client, logger):
             llama_client,
             prompt,
             model,
-            config["toolgroup_id"],
-            logger
+            config["toolgroup_id"]
         )
         # Get Tool execution and Inference steps
         steps = response.steps
@@ -340,9 +337,6 @@ def main():
 
         # Loop through server types
         for server_type, config in server_configs.items():
-            if not config["mcp_url"]:
-                logger.info(f"Skipping {server_type}: MCP URL not set")
-                continue
 
             # Load queries for this server
             queries = load_queries(config["file_path"])
