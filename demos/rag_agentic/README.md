@@ -25,6 +25,6 @@ more to be continue.
 Contains Python source files that implement the concepts from the notebooks. Good for future production stage.
 Before running scripts, remember to set up your environment variables using `.env.example` as a template
 
-### 3. Deploy and play with `frontend/` Streamlit UI 
+### 3. Deploy and play with `frontend/` Streamlit UI
 This folder contains the containerfile to build a user interface based on the playground UI provided by llama-stack. The playground UI is a Streamlit application that provides an interactive interface for testing and experimenting with language models.
 For more information, visit: https://llama-stack.readthedocs.io/en/latest/playground
