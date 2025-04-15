@@ -7,7 +7,8 @@ This folder offers a practical learning path for anyone interested in understand
 2. **Level 2**: Try out simple agentic demo with single tool ussage. (Medium-low difficulty)
 3. **Level 3**: Combine RAG with agentic capabilities (Medium difficulty)
 4. **Level 4**: Explore advanced agentic + MCP (model context protocol) examples (Medium difficulty)
-more to be continue.
+
+More to be continue.
 
 ## Folder Structure
 - `notebooks/`: Jupyter notebooks for learning RAG and agent implementation
