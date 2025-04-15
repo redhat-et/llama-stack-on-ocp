@@ -11,21 +11,21 @@ This folder offers a practical learning path for anyone interested in understand
 More to be continue.
 
 ## Folder Structure
-- `notebooks/`: Jupyter notebooks for learning RAG and agent implementation
-- `src/`: Python source files for production implementation
-- `frontend/`: Containerfile for building the streamlit UI.
+- [`notebooks/`](notebooks/): Jupyter notebooks for learning RAG and agent implementation
+- [`src/`](src/): Python source files for production implementation
+- [`frontend/`](frontend/): Containerfile for building the streamlit UI.
 
 ## Getting Started
-### 1. `notebooks/`: Start with notebooks in order
+### 1. [`notebooks/`](notebooks/): Start with notebooks in order
 - [Level1_foundational_RAG.ipynb](notebooks/Level1_foundational_RAG.ipynb): Start here! Learn the basics of RAG
 - [Level2_simple_agentic_with_websearch.ipynb](notebooks/Level2_simple_agentic_with_websearch.ipynb): Add web search capabilities to your agent
 - [Level3_agentic_RAG.ipynb](notebooks/Level3_agentic_RAG.ipynb): Agentic RAG example, combining RAG with agentic capabilities.
 - [Level4_agentic_and_mcp.ipynb](notebooks/Level4_agentic_and_mcp.ipynb): Advanced topics in agentic and MCP, showcasing  **sequential tool calls** and **conditional logic** within an agentic workflow.
 
-### 2. Review source code in `src/`
+### 2. Review source code in [`src/`](src/)
 Contains Python source files that implement the concepts from the notebooks. Good for future production stage.
 Before running scripts, remember to set up your environment variables using [.env.example](src/.env.example) as a template
 
-### 3. Deploy and play with `frontend/` Streamlit UI
+### 3. Deploy and play with [`frontend/`](frontend/) Streamlit UI
 This folder contains the containerfile to build a user interface based on the playground UI provided by llama-stack. The playground UI is a Streamlit application that provides an interactive interface for testing and experimenting with language models.
 For more information, visit: https://llama-stack.readthedocs.io/en/latest/playground
