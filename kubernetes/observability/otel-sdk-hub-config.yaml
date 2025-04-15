@@ -1,0 +1,19 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: hub
+spec:
+  exporter:
+    endpoint: http://otel-collector-collector.observability-hub.svc.cluster.local:4317
+  env:
+    # NOTE: can this be provided by the service itself?
+    # - name: "OTEL_SERVICE_NAME"
+    #   value: "om-llamastack"
+    - name: "OTEL_EXPORTER_OTLP_TRACES_INSECURE"
+      value: "true"
+    # NOTE: Is http requiered?
+    - name: "OTEL_TRACE_ENDPOINT"
+      value: "http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces"
+  propagators:
+    - tracecontext
+    - baggage

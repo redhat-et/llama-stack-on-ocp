@@ -20,6 +20,8 @@ spec:
       creationTimestamp: null
       labels:
         app: granite-8b
+      annotations:
+        instrumentation.opentelemetry.io/inject-sdk: "hub" # NOTE: May extend with ".<namespace>"
     spec:
       containers:
       - args:
