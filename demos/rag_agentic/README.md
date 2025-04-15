@@ -6,7 +6,7 @@ This folder offers a practical learning path for anyone interested in understand
 1. **Level 1**: Understand foundational RAG concepts (Low difficulty)
 2. **Level 2**: Try out simple agentic demo with single tool ussage. (Medium-low difficulty)
 3. **Level 3**: Combine RAG with agentic capabilities (Medium difficulty)
-4. **Level 4**: Explore advanced agentic RAG features (Medium difficulty)
+4. **Level 4**: Explore advanced agentic + MCP (model context protocol) examples (Medium difficulty)
 more to be continue.
 
 ## Folder Structure
@@ -16,14 +16,14 @@ more to be continue.
 
 ## Getting Started
 ### 1. `notebooks/`: Start with notebooks in order
-- `Level1_foundational_RAG.ipynb`: Start here! Learn the basics of RAG
-- `Level2_simple_agentic_with_websearch.ipynb`: Add web search capabilities to your agent
-- `Level3_agentic_RAG.ipynb`: Combine RAG with agentic capabilities
-- `Level4_agentic_and_mcp.ipynb`: Advanced topics in agentic RAG
+- [Level1_foundational_RAG.ipynb](notebooks/Level1_foundational_RAG.ipynb): Start here! Learn the basics of RAG
+- [Level2_simple_agentic_with_websearch.ipynb](notebooks/Level2_simple_agentic_with_websearch.ipynb): Add web search capabilities to your agent
+- [Level3_agentic_RAG.ipynb](notebooks/Level3_agentic_RAG.ipynb): Agentic RAG example, combining RAG with agentic capabilities.
+- [Level4_agentic_and_mcp.ipynb](notebooks/Level4_agentic_and_mcp.ipynb): Advanced topics in agentic and MCP, showcasing  **sequential tool calls** and **conditional logic** within an agentic workflow.
 
 ### 2. Review source code in `src/`
 Contains Python source files that implement the concepts from the notebooks. Good for future production stage.
-Before running scripts, remember to set up your environment variables using `.env.example` as a template
+Before running scripts, remember to set up your environment variables using [.env.example](src/.env.example) as a template
 
 ### 3. Deploy and play with `frontend/` Streamlit UI
 This folder contains the containerfile to build a user interface based on the playground UI provided by llama-stack. The playground UI is a Streamlit application that provides an interactive interface for testing and experimenting with language models.
