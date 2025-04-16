@@ -14,6 +14,8 @@ spec:
       creationTimestamp: null
       labels:
         app: watt-8b
+      annotations:
+        instrumentation.opentelemetry.io/inject-sdk: "hub" # NOTE: May extend with ".<namespace>"
     spec:
       volumes:
         - name: hf-cache

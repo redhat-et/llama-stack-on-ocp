@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       annotations:
-        sidecar.opentelemetry.io/inject: llamastack-otelsidecar
+        instrumentation.opentelemetry.io/inject-sdk: "hub" # NOTE: May extend with ".<namespace>"
       labels:
         app: llamastack
     spec:
@@ -44,10 +44,6 @@ spec:
               value: 'https://llama32-3b-llama-serve.apps.ocp-beta-test.nerc.mghpcc.org/v1'
             - name: VLLM_API_TOKEN
               value: fake
-            - name: OTEL_SERVICE_NAME
-              value: om-llamastack
-            - name: OTEL_TRACE_ENDPOINT
-              value: 'http://localhost:4318/v1/traces'
             - name: SAFETY_MODEL
               value: meta-llama/Llama-Guard-3-8B
             - name: SAFETY_VLLM_URL
