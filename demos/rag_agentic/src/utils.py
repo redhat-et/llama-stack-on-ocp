@@ -4,16 +4,14 @@ from termcolor import cprint
 
 def step_printer(steps):
     """
-    Print the steps of an agent's response in a formatted way. 
+    Print the steps of an agent's response in a formatted way.
     Note: stream need to be set to False to use this function.
-    
     Args:
     steps: List of steps from an agent's response.
     """
     for i, step in enumerate(steps):
         step_type = type(step).__name__
         print("\n"+"-" * 10, f"📍 Step {i+1}: {step_type}","-" * 10)
-        
         if step_type == "ToolExecutionStep":
             print("🔧 Executing tool...")
             pprint(json.loads(step.tool_responses[0].content))
