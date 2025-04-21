@@ -20,7 +20,7 @@ The below diagram is an example architecture for a secure Llama Stack based appl
 The following scenarios requires at minimum the following:
 
 * OpenShift Cluster 4.17+
-* 8 GPUs free (A100 or H100)
+* 2 GPUs free
 
 ## Deploy
 A `kustomization.yaml` file exists to launch all required Kubernetes objects for the scenarios defined in the repository. To create run the following.
