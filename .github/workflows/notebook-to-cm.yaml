@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - 'demos/rag_agentic/notebooks/**.ipynb'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
@@ -30,12 +33,12 @@ jobs:
         run: |
           python utils/dynamic_notebooks.py
 
-      - name: Commit changes
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'github-actions@github.com'
-          git add kubernetes/
-          git commit -m "Auto-generate notebook ConfigMap and deployment YAML" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Commit changes
+#        run: |
+#          git config --global user.name 'GitHub Actions'
+#          git config --global user.email 'github-actions@github.com'
+#          git add kubernetes/
+#          git commit -m "Auto-generate notebook ConfigMap and deployment YAML" || echo "No changes to commit"
+#          git push
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
