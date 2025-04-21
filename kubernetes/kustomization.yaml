@@ -36,3 +36,7 @@ resources:
   - mcp-servers/openshift-mcp/openshift-service.yaml
   - mcp-servers/openshift-mcp/openshift-rolebinding.yaml
   - mcp-servers/openshift-mcp/openshift-serviceaccount.yaml
+
+  # notebooks and configmaps
+  - notebooks/configmap-notebooks.yaml
+  - notebooks/openshift-ai-notebooks-deployment.yaml
