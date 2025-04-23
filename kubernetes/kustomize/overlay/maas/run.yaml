@@ -14,7 +14,7 @@ apis:
 - vector_io
 providers:
   inference:
-  - provider_id: llama-3b
+  - provider_id: ${env.MAAS_MODEL_TYPE:llama-3b}
     provider_type: remote::vllm
     config:
       url: ${env.MAAS_URL:fake}
@@ -71,13 +71,14 @@ providers:
     provider_type: inline::braintrust
     config:
       openai_api_key: ${env.OPENAI_API_KEY:}
-  telemetry:
+  telemetry: 
   - provider_id: meta-reference
     provider_type: inline::meta-reference
     config:
       service_name: ${env.OTEL_SERVICE_NAME:llama-stack}
-      sinks: ${env.TELEMETRY_SINKS:console, otel_trace, sqlite}
-      otel_trace_endpoint: ${env.OTEL_TRACE_ENDPOINT:}
+      sinks: ${env.TELEMETRY_SINKS:console,sqlite}
+  #     sinks: ${env.TELEMETRY_SINKS:console, otel_trace, sqlite}
+  #     otel_trace_endpoint: ${env.OTEL_TRACE_ENDPOINT:}
       sqlite_db_path: ${env.SQLITE_DB_PATH:~/.llama/distributions/remote-vllm/trace_store.db}
   tool_runtime:
   - provider_id: brave-search
@@ -105,7 +106,7 @@ metadata_store:
 models:
 - metadata: {}
   model_id: ${env.MAAS_MODEL_NAME}
-  provider_id: llama-3b
+  provider_id: ${env.MAAS_MODEL_TYPE:llama-3b}
   model_type: llm
 - metadata:
     embedding_dimension: 384
