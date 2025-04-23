@@ -41,7 +41,7 @@ spec:
           protocol: TCP
         env:
           - name: LLAMA_STACK_ENDPOINT
-            value: 'http://llamastack-server.llama-serve.svc.cluster.local:8321'
+            value: 'http://llamastack-server:8321'
       volumes:
       - name: proxy-tls
         secret:

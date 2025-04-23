@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llamastack-deployment
+spec:
+  template:
+    spec:
+      containers:
+        - name: llamastack
+          envFrom:
+            - secretRef:
+                name: maas-env-secret
