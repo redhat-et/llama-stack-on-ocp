@@ -9,4 +9,4 @@ spec:
         - name: llamastack
           envFrom:
             - secretRef:
-                name: maas-env-secret
+                name: maas-env-secret # This can be changed to point to your existing secret
