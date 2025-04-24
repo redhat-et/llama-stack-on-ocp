@@ -5,8 +5,10 @@ description = "llama-stack-demos"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "llama-stack-client==0.1.9",
+    "ipykernel==7.0.0a0",
+    "llama-stack-client==0.2.2",
     "pre-commit>=4.2.0",
     "python-dotenv>=1.1.0",
     "streamlit>=1.44.1",
+    "geocoder>=1.38.1",
 ]

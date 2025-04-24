@@ -14,7 +14,11 @@ def step_printer(steps):
         print("\n"+"-" * 10, f"📍 Step {i+1}: {step_type}","-" * 10)
         if step_type == "ToolExecutionStep":
             print("🔧 Executing tool...")
-            pprint(json.loads(step.tool_responses[0].content))
+            try:
+                pprint(json.loads(step.tool_responses[0].content))
+            except TypeError:
+                # tool response is not a valid JSON object
+                pprint(step.tool_responses[0].content)
         else:
             if step.api_model_response.content:
                 print("🤖 Model Response:")

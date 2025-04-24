@@ -10,7 +10,6 @@ Current Demos:
 
 * [RAG/Agentic](./demos/rag_agentic/)
 
-
 ## Example Architecture
 The below diagram is an example architecture for a secure Llama Stack based application deployed on OpenShift (OCP) using both MCP tools and a [Milvus](https://milvus.io/) vectorDB for its agentic and RAG based workflows. This is the same architecture that has been implemented in the [RAG/Agentic](./demos/rag_agentic/) demos.
 
@@ -20,7 +19,7 @@ The below diagram is an example architecture for a secure Llama Stack based appl
 The following scenarios requires at minimum the following:
 
 * OpenShift Cluster 4.17+
-* 8 GPUs free (A100 or H100)
+* 2 GPUs with a minimum of 40GB VRAM each
 
 ## Deploy
 A `kustomization.yaml` file exists to launch all required Kubernetes objects for the scenarios defined in the repository. To create run the following.
