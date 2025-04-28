@@ -27,11 +27,11 @@ spec:
         - |
           echo "Cloning repository..."
           git clone https://github.com/rhpds/llama-stack-on-ocp.git /tmp/repo
-          
+
           echo "Copying notebooks to persistent storage..."
           mkdir -p /workspace/
           cp -r /tmp/repo/demos/rag_agentic/notebooks/* /workspace/
-          
+
           echo "Notebook files copied successfully!"
         volumeMounts:
         - name: lab-storage
