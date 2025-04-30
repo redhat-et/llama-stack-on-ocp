@@ -32,10 +32,17 @@ spec:
           terminationMessagePath: /dev/termination-log
           name: llamastack
           env:
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: OPENAI_API_KEY
+                  name: openai-secret
             - name: MAX_TOKENS
               value: '128000'
             - name: VLLM_MAX_TOKENS
               value: '128000'
+            - name: LLM_AS_JUDGE_MODEL
+              value: openai/gpt-4o
             - name: LLAMA3B_URL
               value: 'https://llama32-3b.llama-serve.svc.cluster.local/v1'
             - name: LLAMA3B_MODEL
@@ -46,14 +53,16 @@ spec:
               value: granite32-8b
             - name: VLLM_API_TOKEN
               value: fake
+            - name: CUSTOM_TIKTOKEN_CACHE_DIR
+              value: /app/cache
             - name: OTEL_SERVICE_NAME
               value: om-llamastack
             - name: OTEL_TRACE_ENDPOINT
               value: 'http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces'
             - name: MILVUS_DB_PATH
               value: milvus.db
-            - name: LLAMA_STACK_LOG
-              value: debug
+            - name: LLAMA_STACK_LOGGING
+              value: all=debug
           ports:
             - containerPort: 8321
               protocol: TCP

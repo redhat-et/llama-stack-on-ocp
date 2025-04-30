@@ -18,6 +18,10 @@ data:
     - vector_io
     providers:
       inference:
+      - provider_id: openai
+        provider_type: remote::openai
+        config:
+          api_key: ${env.OPENAI_API_KEY:}
       - provider_id: llama-3b
         provider_type: remote::vllm
         config:
@@ -114,6 +118,11 @@ data:
       type: sqlite
       db_path: ${env.SQLITE_STORE_DIR:~/.llama/distributions/remote-vllm}/registry.db
     models:
+    - metadata: {}
+      model_id: ${env.LLM_AS_JUDGE_MODEL}
+      provider_id: openai
+      provider_model_id: ${env.LLM_AS_JUDGE_MODEL}
+      model_type: llm
     - metadata: {}
       model_id: ${env.LLAMA3B_MODEL}
       provider_id: llama-3b

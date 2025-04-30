@@ -12,4 +12,5 @@ dependencies = [
     "streamlit>=1.44.1",
     "geocoder>=1.38.1",
     "llama-stack>=0.2.4",
+    "scipy>=1.15.2",
 ]
