@@ -6,7 +6,7 @@ resources:
   - route.yaml
   - service.yaml
   - template.yaml
-  # - otel-collector-sidecar.yaml
+  - otel-collector-sidecar.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
