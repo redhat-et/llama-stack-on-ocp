@@ -40,7 +40,6 @@ The following scenarios requires at minimum the following:
 
 * OpenShift Cluster 4.17+
 * 2 GPUs with a minimum of 40GB VRAM each
-* An OpenAI token to run the evaluation notebook. We recommend injecting the token as a Secret with: `oc create secret generic openai-secret --from-literal=OPENAI_API_KEY=${OPENAI_API_KEY}`
 
 ## Deploy
 A `kustomization.yaml` file exists to launch all required Kubernetes objects for the scenarios defined in the repository. To create run the following.
@@ -49,6 +48,12 @@ A `kustomization.yaml` file exists to launch all required Kubernetes objects for
 oc new-project llama-serve
 oc apply -k kubernetes/kustomize/overlay/all-models
 ```
+
+To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level3.5_agentic_RAG_with_reference_eval.ipynb), 
+we recommend the following:
+* Inject the OpenAI API token into the Llama Stack application as a Secret with: `oc create secret generic openai-secret --from-literal=OPENAI_API_KEY=${OPENAI_API_KEY}`
+* Use the dedicated overlay as: `oc apply -k kubernetes/kustomize/overlay/eval`
+
 ## Running Demos and Notebooks
 
 This project uses `uv` as its package manager for the python based notebooks and demo scripts. You can quickly set up your working environment by following these steps:
