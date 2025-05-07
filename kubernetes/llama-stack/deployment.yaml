@@ -32,17 +32,10 @@ spec:
           terminationMessagePath: /dev/termination-log
           name: llamastack
           env:
-            - name: OPENAI_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: OPENAI_API_KEY
-                  name: openai-secret
             - name: MAX_TOKENS
               value: '128000'
             - name: VLLM_MAX_TOKENS
               value: '128000'
-            - name: LLM_AS_JUDGE_MODEL
-              value: openai/gpt-4o
             - name: LLAMA3B_URL
               value: 'https://llama32-3b.llama-serve.svc.cluster.local/v1'
             - name: LLAMA3B_MODEL
