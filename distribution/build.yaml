@@ -1,0 +1,34 @@
+version: '2'
+distribution_spec:
+  description: "Distribution of the Llama Stack demos"
+  providers:
+    inference:
+    - remote::vllm
+    - inline::sentence-transformers
+    vector_io:
+    - inline::milvus
+    safety:
+    - inline::llama-guard
+    agents:
+    - inline::meta-reference
+    telemetry:
+    - inline::meta-reference
+    eval:
+    - remote::lmeval
+    datasetio:
+    - remote::huggingface
+    - inline::localfs
+    scoring:
+    - inline::basic
+    - inline::llm-as-judge
+    - inline::braintrust
+    tool_runtime:
+    - remote::brave-search
+    - remote::tavily-search
+    - inline::code-interpreter
+    - inline::rag-runtime
+    - remote::model-context-protocol
+  container_image: "registry.access.redhat.com/ubi9"
+image_type: container
+image_name: llama-stack-demos
+external_providers_dir: ./providers.d

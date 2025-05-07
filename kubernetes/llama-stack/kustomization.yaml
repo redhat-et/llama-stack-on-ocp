@@ -5,13 +5,8 @@ resources:
   - pvc.yaml
   - route.yaml
   - service.yaml
-  - template.yaml
+  - run.yaml
   # - otel-collector-sidecar.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
-
-configMapGenerator:
-  - name: run-config
-    files:
-      - config.yaml=run.yaml

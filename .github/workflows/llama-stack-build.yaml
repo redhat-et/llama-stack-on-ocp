@@ -8,7 +8,6 @@ on:
         type: string
         default: '0.1.9'
 
-
 jobs:
   llama-stack-build:
     runs-on: ubuntu-latest
@@ -35,25 +34,23 @@ jobs:
       - name: Install repo packages
         run: |
           pip install -U .
+          cd ..
 
-      - name: modify the build.yaml
-        run: |
-          sed -i 's/    - inline::faiss/    - inline::milvus/g' llama_stack/templates/remote-vllm/build.yaml
-          sed -i '/^ *- inline::faiss$/d; /^ *- remote::chromadb$/d; /^ *- remote::pgvector$/d' llama_stack/templates/remote-vllm/build.yaml
-          sed -i 's/image_type: conda/image_type: container/g' llama_stack/templates/remote-vllm/build.yaml
-
-      - name: display contents of buld.yaml
-        run: |
-          cat llama_stack/templates/remote-vllm/build.yaml
+      - name: clone the llama stack demo repo
+        uses: actions/checkout@v4
+        with:
+          repository: opendatahub-io/llama-stack-demos.git
+          ref: main
 
       - name: run llama stack build
         run: |
+          cd distribution
           export CONTAINER_BINARY=podman
-          llama stack build --config llama_stack/templates/remote-vllm/build.yaml --image-type container --image-name remote-vllm
+          llama stack build --config build.yaml
 
       - name: tag the image
         run: |
-          podman tag localhost/remote-vllm:${{inputs.version}} quay.io/redhat-et/llama:vllm-${{inputs.version}}
+          podman tag localhost/llama-stack-demos:${{inputs.version}} quay.io/redhat-et/llama:vllm-${{inputs.version}}
 
       - name: push the image
         run: |

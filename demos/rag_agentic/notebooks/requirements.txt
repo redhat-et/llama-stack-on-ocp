@@ -1,0 +1,2 @@
+llama-stack==0.2.4
+geocoder

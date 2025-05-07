@@ -21,16 +21,12 @@ spec:
       name: ''
       resources:
         limits:
-          cpu: '6'
+          cpu: '2'
           memory: 16Gi
           nvidia.com/gpu: '1'
         requests:
-          cpu: '4'
+          cpu: '2'
           memory: 8Gi
           nvidia.com/gpu: '1'
       runtime: llama32-3b
       storageUri: 'oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct'
-    tolerations:
-      - effect: NoSchedule
-        key: nvidia.com/gpu
-        operator: Exists

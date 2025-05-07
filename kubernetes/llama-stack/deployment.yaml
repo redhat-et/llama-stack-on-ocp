@@ -36,14 +36,14 @@ spec:
               value: '128000'
             - name: VLLM_MAX_TOKENS
               value: '128000'
-            - name: LLAMA3B_MODEL
-              value: meta-llama/Llama-3.2-3B-Instruct
-            - name: GRANITE_URL
-              value: 'https://granite-8b-llama-serve.apps.ocp-beta-test.nerc.mghpcc.org/v1'
-            - name: GRANITE_MODEL
-              value: ibm-granite/granite-3.2-8b-instruct
             - name: LLAMA3B_URL
-              value: 'https://llama32-3b-llama-serve.apps.ocp-beta-test.nerc.mghpcc.org/v1'
+              value: 'https://llama32-3b.llama-serve.svc.cluster.local/v1'
+            - name: LLAMA3B_MODEL
+              value: llama32-3b
+            - name: GRANITE_URL
+              value: 'https://granite32-8b.llama-serve.svc.cluster.local/v1'
+            - name: GRANITE_MODEL
+              value: granite32-8b
             - name: VLLM_API_TOKEN
               value: fake
             - name: OTEL_SERVICE_NAME
@@ -68,7 +68,7 @@ spec:
             - name: cache
               mountPath: /.cache
           terminationMessagePolicy: File
-          image: 'quay.io/redhat-et/llama:vllm-0.2.2'
+          image: 'quay.io/redhat-et/llama:vllm-0.2.4'
           args:
             - '--config'
             - /app-config/config.yaml
