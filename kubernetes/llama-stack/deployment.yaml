@@ -47,10 +47,6 @@ spec:
               value: fake
             - name: CUSTOM_TIKTOKEN_CACHE_DIR
               value: /app/cache
-            - name: OTEL_SERVICE_NAME
-              value: om-llamastack
-            - name: OTEL_TRACE_ENDPOINT
-              value: 'http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces'
             - name: MILVUS_DB_PATH
               value: milvus.db
             - name: LLAMA_STACK_LOGGING
