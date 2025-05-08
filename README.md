@@ -49,7 +49,7 @@ oc new-project llama-serve
 oc apply -k kubernetes/kustomize/overlay/all-models
 ```
 
-To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level3.5_agentic_RAG_with_reference_eval.ipynb), 
+To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level3.5_agentic_RAG_with_reference_eval.ipynb),
 we recommend the following:
 * Inject the OpenAI API token into the Llama Stack application as a Secret with: `oc create secret generic openai-secret --from-literal=OPENAI_API_KEY=${OPENAI_API_KEY}`
 * Use the dedicated overlay as: `oc apply -k kubernetes/kustomize/overlay/eval`
