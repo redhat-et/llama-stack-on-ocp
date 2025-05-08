@@ -84,12 +84,12 @@ We are building this agent through a series of focused demonstrations, each prog
 
 2.  **`Level2_simple_agentic_with_websearch.ipynb`:**
     * **Focus:** Introduces the basic agent framework with the ability to utilize tools. This notebook showcases the agent's capacity to interact with the external world.
-    * **Task Example:** What’s latest in OpenShift?
+    * **Task Example:** What's latest in OpenShift?
     * **Agent Capability:** Uses a `web_search_tool` to retrieve and summarize publicly available information.
 
 3.  **`Level3_advance_agentic_with_Prompt_Chaining_ReAct.ipynb`:**
     * **Focus:** Builds upon the simple agent by incorporating location awareness, prompt chaining for complex reasoning, and the ReAct framework for structured action planning.
-    * **Task Example:** "Hey, check if there’s anything happening weather-wise near me that might affect our pod deployments." / "Are there any weather-related risks in my area that could disrupt network connectivity or system availability?"
+    * **Task Example:** "Hey, check if there's anything happening weather-wise near me that might affect our pod deployments." / "Are there any weather-related risks in my area that could disrupt network connectivity or system availability?"
     * **Agent Capabilities:** Utilizes a `web_search_tool` for weather information and a `get_location` client tool. Demonstrates prompt chaining and the ReAct agent methodology.
 
 4.  **`Level4_agentic_RAG.ipynb`:**
@@ -99,7 +99,7 @@ We are building this agent through a series of focused demonstrations, each prog
 
 5.  **`Level5_agentic_and_mcp.ipynb`:**
     * **Focus:** Integrates the agent with our OpenShift, and slack environment via MCP tools, enabling real-time interaction and automation of operational tasks. This notebook explores various levels of OpenShift interaction.
-    * **Task Example:** "Check the status of my OpenShift cluster. If it’s running, create a new pod named `test-pod` in the `dev` namespace." / "Review OpenShift logs for pod `slack-test`. Categorize each as ‘Normal’ or ‘Error’. If any show ‘Error’, send a Slack message to the ops team. Otherwise, show a simple summary."
+    * **Task Example:** "Check the status of my OpenShift cluster. If it's running, create a new pod named `test-pod` in the `dev` namespace." / "Review OpenShift logs for pod `slack-test`. Categorize each as 'Normal' or 'Error'. If any show 'Error', send a Slack message to the ops team. Otherwise, show a simple summary."
     * **Agent Capability:** Utilizes `Openshift` and `slack` tools to demonstrate a complex workflow, of interacting with OCP and updating team via slack.
 
 
@@ -117,3 +117,9 @@ By exploring these notebooks in sequence, you can gain a comprehensive understan
 ## Demo Recordings
 
 - **MCP Multi-Tool Call Demo** - Watch this recorded demo showcasing the multi-tool call capabilities of MCP tools: https://youtu.be/aaxclldaVWw. The video walks through a query from the [Level 5 Agentic MCP notebook](notebooks/Level5_agentic_and_mcp.ipynb), including step-by-step instructions for setting up a Slack app, configuring the Slack MCP server, and interacting with it in action.
+
+## Set up for evaluation notebook 3.5
+To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level3.5_agentic_RAG_with_reference_eval.ipynb),
+we recommend the following:
+* Inject the OpenAI API token into the Llama Stack application as a Secret with: `oc create secret generic openai-secret --from-literal=OPENAI_API_KEY=${OPENAI_API_KEY}`
+* Use the dedicated overlay as: `oc apply -k kubernetes/kustomize/overlay/eval`
