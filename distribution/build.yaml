@@ -14,8 +14,6 @@ distribution_spec:
     - inline::meta-reference
     telemetry:
     - inline::meta-reference
-    eval:
-    - remote::lmeval
     datasetio:
     - remote::huggingface
     - inline::localfs
