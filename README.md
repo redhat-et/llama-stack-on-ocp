@@ -6,7 +6,7 @@ Ready to build cutting-edge AI applications with [Llama Stack](https://github.co
 
 Explore the exciting capabilities of Llama Stack through our key demos:
 
-* **Intelligent Agents Unleashed (RAG + Agent + MCP):** Dive into building sophisticated AI agents that understand documents, reason, invoke tools, and perform tasks using [Retrieval-Augmented Generation (RAG)](https://www.ibm.com/think/topics/retrieval-augmented-generation), [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), and advanced agentic workflows. 
+* **Intelligent Agents Unleashed (RAG + Agent + MCP):** Dive into building sophisticated AI agents that understand documents, reason, invoke tools, and perform tasks using [Retrieval-Augmented Generation (RAG)](https://www.ibm.com/think/topics/retrieval-augmented-generation), [Model Context Protocol (MCP)](https://github.com/modelcontextprotocol), and advanced agentic workflows.
 * **Effortless Deployment & Monitoring:** Learn how to seamlessly deploy these powerful agents on Kubernetes & OpenShift using the provided manifests and monitor their performance with our integrated observability toolkit.
 
 ## 💡 Demo Architecture
