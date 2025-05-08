@@ -34,6 +34,7 @@ spec:
           mkdir /workspace/src
           cp -r /tmp/repo/demos/rag_agentic/src/utils.py /workspace/src/
           cp -r /tmp/repo/demos/rag_agentic/src/client_tools.py /workspace/src/
+          cp -r /tmp/repo/images/slack-message.png /workspace/images/slack-message.png
           cp -r /tmp/repo/.env.example /workspace/.env
           echo "Notebook files copied successfully!"
         volumeMounts:
