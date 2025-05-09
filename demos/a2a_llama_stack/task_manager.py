@@ -1,23 +1,32 @@
 import logging
-from typing import AsyncIterable, Union
+from typing import AsyncIterable, Union, AsyncIterator
+
+from llama_stack_client import Agent, AgentEventLogger
+
 import common.server.utils as utils
 from common.server.task_manager import InMemoryTaskManager
 from common.types import (
     SendTaskRequest, SendTaskResponse,
     SendTaskStreamingRequest, SendTaskStreamingResponse,
-    TaskSendParams, TaskStatus, Artifact,
+    TaskStatus, Artifact,
     Message, TaskState,
     TaskStatusUpdateEvent, TaskArtifactUpdateEvent,
     JSONRPCResponse,
 )
-from .agent import MyCustomAgent
 
 logger = logging.getLogger(__name__)
 
+SUPPORTED_CONTENT_TYPES = ["text", "text/plain", "application/json"]
+
+
 class AgentTaskManager(InMemoryTaskManager):
-    def __init__(self, agent: MyCustomAgent):
+    def __init__(self, agent: Agent, internal_session_id=False):
         super().__init__()
         self.agent = agent
+        if internal_session_id:
+            self.session_id = self.agent.create_session("custom-agent-session")
+        else:
+            self.session_id = None
 
     def _validate_request(
         self, request: Union[SendTaskRequest, SendTaskStreamingRequest]
@@ -25,7 +34,7 @@ class AgentTaskManager(InMemoryTaskManager):
         params = request.params
         if not utils.are_modalities_compatible(
             params.acceptedOutputModes,
-            MyCustomAgent.SUPPORTED_CONTENT_TYPES
+            SUPPORTED_CONTENT_TYPES
         ):
             logger.warning("Unsupported output modes: %s", params.acceptedOutputModes)
             return utils.new_incompatible_types_error(request.id)
@@ -37,7 +46,7 @@ class AgentTaskManager(InMemoryTaskManager):
             return err
 
         await self.upsert_task(request.params)
-        result = self.agent.invoke(
+        result = self._invoke(
             request.params.message.parts[0].text,
             request.params.sessionId
         )
@@ -62,7 +71,7 @@ class AgentTaskManager(InMemoryTaskManager):
         params = request.params
         query = params.message.parts[0].text
 
-        async for update in self.agent.stream(query, params.sessionId):
+        async for update in self._stream(query, params.sessionId):
             done = update["is_task_complete"]
             content = update["content"]
             delta = update["updates"]
@@ -92,3 +101,34 @@ class AgentTaskManager(InMemoryTaskManager):
             if artifacts:
                 task.artifacts = (task.artifacts or []) + artifacts
             return task
+
+    def _invoke(self, query: str, session_id: str) -> str:
+        """
+        Route the user query through the Agent, executing tools as needed.
+        """
+        # Determine which session to use
+        if self.session_id is not None:
+            sid = self.session_id
+        else:
+            sid = self.agent.create_session(session_id)
+
+        # Send the user query to the Agent
+        turn_resp = self.agent.create_turn(
+            messages=[{"role": "user", "content": query}],
+            session_id=sid,
+        )
+
+        # Extract tool and LLM outputs from events
+        logs = AgentEventLogger().log(turn_resp)
+        output = ""
+        for event in logs:
+            if hasattr(event, "content") and event.content:
+                output += event.content
+        return output
+
+    async def _stream(self, query: str, session_id: str) -> AsyncIterator[dict]:
+        """
+        Simplest streaming stub: synchronously invoke and emit once.
+        """
+        result = self._invoke(query, session_id)
+        yield {"updates": result, "is_task_complete": True, "content": result}
