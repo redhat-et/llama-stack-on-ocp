@@ -6,14 +6,14 @@ This repository contains practical examples and demos designed to get you starte
 
 ### Requirements
 
-To run these demos in their full glory, ensure your environment meets the following:
+To run these demos, ensure your environment meets the following:
 
 * OpenShift Cluster 4.17+
 * 2 GPUs with a minimum of 40GB VRAM each.
 
 ### Deployment Instructions
 
-Ready to launch? Follow these simple steps to deploy the core components:
+Next, follow these simple steps to deploy the core components:
 
 1.  Create a dedicated OpenShift project:
     ```bash
