@@ -4,6 +4,7 @@ metadata:
   name: proxy
   annotations:
     service.alpha.openshift.io/serving-cert-secret-name: proxy-tls
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   ports:
   - name: proxy

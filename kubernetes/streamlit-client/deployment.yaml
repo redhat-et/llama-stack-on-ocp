@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: streamlit
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   replicas: 1
   selector:

@@ -81,7 +81,7 @@ providers:
     provider_type: inline::meta-reference
     config:
       service_name: ${env.OTEL_SERVICE_NAME:llama-stack}
-      sinks: ${env.TELEMETRY_SINKS:console, otel_trace, sqlite}
+      sinks: ${env.TELEMETRY_SINKS:console, sqlite}
       otel_trace_endpoint: ${env.OTEL_TRACE_ENDPOINT:}
       sqlite_db_path: ${env.SQLITE_DB_PATH:~/.llama/distributions/remote-vllm/trace_store.db}
   tool_runtime:

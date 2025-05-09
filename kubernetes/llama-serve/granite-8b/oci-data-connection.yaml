@@ -8,6 +8,7 @@ metadata:
     opendatahub.io/connection-type-ref: uri-v1
     openshift.io/description: ''
     openshift.io/display-name: granite-3.2-8b-instruct
+    argocd.argoproj.io/sync-wave: "1"
 data:
   URI: b2NpOi8vcXVheS5pby9yZWRoYXQtYWktc2VydmljZXMvbW9kZWxjYXItY2F0YWxvZzpncmFuaXRlLTMuMi04Yi1pbnN0cnVjdA==
 type: Opaque

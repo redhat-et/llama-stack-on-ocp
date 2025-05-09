@@ -2,6 +2,8 @@
 apiVersion: apps/v1
 metadata:
   name: llamastack-deployment
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   replicas: 1
   selector:
@@ -9,11 +11,8 @@ spec:
       app: llamastack
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: llamastack
-      annotations:
-        openshift.openshift.io/restartedAt: '2025-04-14T19:21:43.475Z'
     spec:
       volumes:
         - name: run-config-volume
@@ -48,10 +47,6 @@ spec:
               value: fake
             - name: CUSTOM_TIKTOKEN_CACHE_DIR
               value: /app/cache
-            - name: OTEL_SERVICE_NAME
-              value: om-llamastack
-            - name: OTEL_TRACE_ENDPOINT
-              value: 'http://otel-collector-collector.observability-hub.svc.cluster.local:4318/v1/traces'
             - name: MILVUS_DB_PATH
               value: milvus.db
             - name: LLAMA_STACK_LOGGING
@@ -70,7 +65,7 @@ spec:
             - name: cache
               mountPath: /.cache
           terminationMessagePolicy: File
-          image: 'quay.io/redhat-et/llama:vllm-0.2.4'
+          image: 'quay.io/redhat-et/llama:vllm-fix'
           args:
             - '--config'
             - /app-config/config.yaml

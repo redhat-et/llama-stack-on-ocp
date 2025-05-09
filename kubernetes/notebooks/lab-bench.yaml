@@ -10,6 +10,7 @@ metadata:
     opendatahub.io/image-display-name: Standard Data Science
     openshift.io/description: ""
     openshift.io/display-name: lab
+    argocd.argoproj.io/sync-wave: "5"
   labels:
     app: lab
     opendatahub.io/dashboard: "true"
@@ -32,8 +33,10 @@ spec:
           mkdir -p /workspace/
           cp -r /tmp/repo/demos/rag_agentic/notebooks/* /workspace/
           mkdir /workspace/src
+          mkdir /workspace/images
           cp -r /tmp/repo/demos/rag_agentic/src/utils.py /workspace/src/
           cp -r /tmp/repo/demos/rag_agentic/src/client_tools.py /workspace/src/
+          cp -r /tmp/repo/demos/rag_agentic/images/slack-message.png /workspace/images/slack-message.png
           cp -r /tmp/repo/.env.example /workspace/.env
           echo "Notebook files copied successfully!"
         volumeMounts:

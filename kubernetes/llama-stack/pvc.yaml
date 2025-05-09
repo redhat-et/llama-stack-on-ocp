@@ -4,6 +4,7 @@ metadata:
   name: llama-persist
   annotations:
     openshift.io/description: "Storage for llama stack state"
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   accessModes:
     - ReadWriteOnce

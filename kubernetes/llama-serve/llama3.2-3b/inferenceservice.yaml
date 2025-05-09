@@ -6,9 +6,8 @@ metadata:
     serving.knative.openshift.io/enablePassthrough: 'true'
     sidecar.istio.io/inject: 'true'
     sidecar.istio.io/rewriteAppHTTPProbers: 'true'
+    argocd.argoproj.io/sync-wave: "2"
   name: llama32-3b
-  finalizers:
-    - inferenceservice.finalizers
   labels:
     opendatahub.io/dashboard: 'true'
 spec:
@@ -30,3 +29,9 @@ spec:
           nvidia.com/gpu: '1'
       runtime: llama32-3b
       storageUri: 'oci://quay.io/redhat-ai-services/modelcar-catalog:llama-3.2-3b-instruct'
+    containerConcurrency: 1
+    tolerations:
+    - key: "nvidia.com/gpu"
+      operator: "Equal"
+      value: "True"
+      effect: "NoSchedule"

@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: llamastack-server
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   ports:
     - protocol: TCP

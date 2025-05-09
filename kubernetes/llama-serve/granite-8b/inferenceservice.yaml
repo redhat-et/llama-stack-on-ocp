@@ -6,6 +6,7 @@ metadata:
     serving.knative.openshift.io/enablePassthrough: 'true'
     sidecar.istio.io/inject: 'true'
     sidecar.istio.io/rewriteAppHTTPProbers: 'true'
+    argocd.argoproj.io/sync-wave: "2"
   name: granite32-8b
   finalizers:
     - inferenceservice.finalizers
@@ -30,3 +31,9 @@ spec:
           nvidia.com/gpu: '1'
       runtime: granite32-8b
       storageUri: 'oci://quay.io/redhat-ai-services/modelcar-catalog:granite-3.2-8b-instruct'
+    containerConcurrency: 1
+    tolerations:
+    - key: "nvidia.com/gpu"
+      operator: "Equal"
+      value: "True"
+      effect: "NoSchedule"

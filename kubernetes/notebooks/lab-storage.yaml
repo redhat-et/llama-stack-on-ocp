@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   annotations:
     openshift.io/display-name: lab-storage
+    argocd.argoproj.io/sync-wave: "5"
   labels:
     opendatahub.io/dashboard: "true"
   name: lab-storage
