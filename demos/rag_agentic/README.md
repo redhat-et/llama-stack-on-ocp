@@ -118,8 +118,8 @@ By exploring these notebooks in sequence, you can gain a comprehensive understan
 
 - **MCP Multi-Tool Call Demo** - Watch this recorded demo showcasing the multi-tool call capabilities of MCP tools: https://youtu.be/aaxclldaVWw. The video walks through a query from the [Level 5 Agentic MCP notebook](notebooks/Level5_agentic_and_mcp.ipynb), including step-by-step instructions for setting up a Slack app, configuring the Slack MCP server, and interacting with it in action.
 
-## Set up for evaluation notebook 3.5
-To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level3.5_agentic_RAG_with_reference_eval.ipynb),
+## Set up for evaluation notebook 4.5
+To execute the evaluation [notebook](./demos/rag_agentic/notebooks/Level4.5_agentic_RAG_with_reference_eval.ipynb),
 we recommend the following:
 * Inject the OpenAI API token into the Llama Stack application as a Secret with: `oc create secret generic openai-secret --from-literal=OPENAI_API_KEY=${OPENAI_API_KEY}`
 * Use the dedicated overlay as: `oc apply -k kubernetes/kustomize/overlay/eval`
