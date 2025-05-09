@@ -1,6 +1,6 @@
 # Llama Stack Demos on OpenDataHub
 
-This repository contains practical examples and demos designed to get you started quickly building AI apps with [Llama Stack](https://github.com/meta-llama/llama-stack) on Kubernetes or OpenShift. Whether you're a cluster admin looking to deploy the right GenAI infrastructure or a developer eager to innovate with AI Agents, the content in this repo should help you get started. 
+This repository contains practical examples and demos designed to get you started quickly building AI apps with [Llama Stack](https://github.com/meta-llama/llama-stack) on Kubernetes or OpenShift. Whether you're a cluster admin looking to deploy the right GenAI infrastructure or a developer eager to innovate with AI Agents, the content in this repo should help you get started.
 
 ## 🛠️ Get Started
 
