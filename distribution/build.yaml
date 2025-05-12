@@ -3,8 +3,8 @@ distribution_spec:
   description: Use (an external) vLLM server for running LLM inference
   providers:
     inference:
-    - remote::openai
     - remote::vllm
+    - remote::openai
     - inline::sentence-transformers
     vector_io:
     - inline::milvus
@@ -26,9 +26,9 @@ distribution_spec:
     tool_runtime:
     - remote::brave-search
     - remote::tavily-search
-    - inline::code-interpreter
     - inline::rag-runtime
     - remote::model-context-protocol
+    - remote::wolfram-alpha
   container_image: "registry.access.redhat.com/ubi9"
 image_type: container
 image_name: llama-stack-demos
