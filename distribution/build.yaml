@@ -28,7 +28,7 @@ distribution_spec:
     - remote::tavily-search
     - inline::rag-runtime
     - remote::model-context-protocol
-    - remote::wolfram-alpha
+    - inline::code-interpreter
   container_image: "registry.access.redhat.com/ubi9"
 image_type: container
 image_name: llama-stack-demos
