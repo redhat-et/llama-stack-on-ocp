@@ -12,11 +12,11 @@ spec:
         args:
         - |
           echo "Packing reports...";
-          cd /output && \
+          cd /app/data && \
           tar czf guidellm-reports.tgz *.yaml
         volumeMounts:
         - name: output
-          mountPath: /output
+          mountPath: /app/data
       restartPolicy: Never
       volumes:
       - name: output
