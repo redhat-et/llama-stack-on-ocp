@@ -134,4 +134,4 @@ tool_groups:
 - toolgroup_id: mcp::slack
   provider_id: model-context-protocol
   mcp_endpoint:
-    uri: "http://slack-mcp-server:8080/sse"
+    uri: "http://slack-mcp-server:80/sse"
