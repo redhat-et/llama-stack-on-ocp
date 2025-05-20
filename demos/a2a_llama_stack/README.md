@@ -89,8 +89,9 @@ setx MODEL_ID "llama3.2:3b-instruct-fp16"
 ## 6 — Launch the Agent
 
 ```bash
-# From A2A/samples/python
+# Navigate to A2A/samples/python
 cd ../..
+# Run the following python command from A2A/samples/python
 python -m agents.a2a_llama_stack --port 10010
 ```
 
