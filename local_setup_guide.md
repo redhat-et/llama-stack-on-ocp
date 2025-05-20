@@ -95,7 +95,7 @@ pip list | grep llama-stack-client
 ## **6. Configure the Client**
 Set up the client to connect to the Llama Stack server:
 ```bash
-llama-stack-client configure --endpoint http://localhost:$LLAMA_STACK_PORT
+llama-stack-client configure --endpoint http://host.containers.internal:$LLAMA_STACK_PORT
 ```
 List available models:
 ```bash
