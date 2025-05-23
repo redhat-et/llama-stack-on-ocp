@@ -6,7 +6,6 @@ from llama_stack_client import LlamaStackClient, Agent
 from common.server import A2AServer
 from common.types import AgentCard, AgentCapabilities, AgentSkill
 
-from .agent import random_number_tool, date_tool
 from .task_manager import AgentTaskManager, SUPPORTED_CONTENT_TYPES
 
 logging.basicConfig(level=logging.INFO)
@@ -15,16 +14,14 @@ logging.basicConfig(level=logging.INFO)
 def build_server(host: str = "0.0.0.0", port: int = 10010):
     # 1) instantiate your agent with the required parameters
     agent = Agent(
-        client=LlamaStackClient(base_url=os.getenv("LLAMA_STACK_URL", "http://localhost:8321")),
-        model=os.getenv("MODEL_ID", "llama3.2:3b-instruct-fp16"),
-        instructions=(
-            "You have access to two tools:\n"
-            "- random_number_tool: generates a random integer between 1 and 100\n"
-            "- date_tool: returns today's date in YYYY-MM-DD format\n"
-            "Use the appropriate tool to answer user queries."
-        ),
-        tools=[random_number_tool, date_tool],
-        max_infer_iters=3,
+        client=LlamaStackClient(base_url=os.getenv("REMOTE_BASE_URL", "http://localhost:8321")),
+        model=os.getenv("INFERENCE_MODEL_ID", "llama3.1:8b-instruct-fp16"),
+        instructions="You are an orchestration assistant. Ensure you count correctly the number of skills needed.",
+        max_infer_iters=10,
+        sampling_params = {
+                    "strategy": {"type": "greedy"},
+                    "max_tokens": 4096,
+                },
     )
 
     # 2) wrap it in the A2A TaskManager
@@ -32,17 +29,28 @@ def build_server(host: str = "0.0.0.0", port: int = 10010):
 
     # 3) advertise your tools as AgentSkills
     card = AgentCard(
-        name="Custom Agent",
-        description="Generates random numbers or dates",
+        name="Orchestration Agent",
+        description="Plans which tool to call for each user question",
         url=f"http://{host}:{port}/",
         version="0.1.0",
         defaultInputModes=["text/plain"],
         defaultOutputModes=SUPPORTED_CONTENT_TYPES,
-        capabilities=AgentCapabilities(streaming=True),
-        skills=[
-            AgentSkill(id="random_number", name="Random Number Generator"),
-            AgentSkill(id="get_date",      name="Date Provider"),
-        ],
+        capabilities=AgentCapabilities(
+            streaming=False,
+            pushNotifications=False,
+            stateTransitionHistory=False,
+            ),
+    skills = [
+        AgentSkill(
+            id="orchestrate",
+            name="Orchestration Planner",
+            description="Plan user questions into JSON steps of {skill_id}",
+            tags=["orchestration"],
+            examples=["Plan: What's today's date and a random number?"],
+            inputModes=["text/plain"],
+            outputModes=["application/json"],
+        )
+        ]
     )
 
     return A2AServer(
