@@ -1,127 +1,266 @@
-# Integrating a Custom Agent with Google A2A on **Llama Stack**
+# Running Your Llama Stack Agent with Google A2A
 
-This guide walks you through running a custom agent on **Llama Stack** using Google’s **Agent‑to‑Agent (A2A)** protocol.
-
----
-
-## 🛠 Prerequisites
-
-- **Python 3.8 or newer**
-- **`pip`** (Python package manager)
-- A **Llama Stack** inference server running and reachable
+Welcome! This guide provides comprehensive instructions for setting up and running a custom agent on **Llama Stack**, leveraging Google’s **Agent‑to‑Agent (A2A)** communication protocol. Follow these steps to make your agent operational.
 
 ---
 
-## 1 — Download the Code
+## Overview
+
+By completing this guide, you will accomplish the following:
+1.  Setting up your development environment.
+2.  Download the requisite code repositories.
+3.  Install all necessary dependencies.
+4.  Configure connection details for your Llama Stack inference server.
+5.  Launch the A2A agent server(s).
+6.  Execute a client application to dispatch tasks to your agent(s).
+
+---
+
+## Prerequisites
+
+Before commencing, please ensure the following components are installed and accessible:
+* **Python 3.8 or newer**
+* **`pip`** (Python package manager)
+* A **Llama Stack** inference server, running and reachable from your machine.
+
+---
+
+## Setup Instructions
+
+Follow these steps to prepare your environment and the application code.
+
+### 1. Download the Required Code
+
+Begin by cloning two Git repositories: the Llama Stack demos and the Google A2A examples.
 
 ```bash
-# Clone the Llama Stack demos
+# Clone the Llama Stack demos repository
 git clone https://github.com/opendatahub-io/llama-stack-demos.git
 
-# Clone the Google A2A examples
+
+# Clone the Google A2A examples repository
 git clone https://github.com/google/A2A.git
 ```
+*These commands will create two new directories, `llama-stack-demos` and `A2A`, in your current working folder.*
 
----
+### 2. Create and Activate a Python Virtual Environment
 
-## 2 — Create & Activate a Virtual Environment
+Employing a virtual environment is strongly recommended to manage project-specific dependencies effectively and prevent conflicts with your global Python installation or other projects.
 
 ```bash
+# Navigate to your main project directory (e.g. where you cloned the repositories).
+# Create a virtual environment named 'venv'
 python3 -m venv venv
-# macOS / Linux
-source venv/bin/activate
-# Windows
-venv\Scripts\activate
 ```
 
----
+Next, activate the virtual environment. The activation command varies by operating system:
 
-## 3 — Prepare the Agent Package
+* **macOS / Linux:**
+    ```bash
+    source venv/bin/activate
+    ```
+* **Windows (Command Prompt or PowerShell):**
+    ```bash
+    venv\Scripts\activate
+    ```
+*Once activated, your terminal prompt should typically be prefixed with `(venv)`, indicating the virtual environment is active.*
+
+### 3. Prepare the Custom Agent Package
+
+You will now copy the Llama Stack agent code from the `llama-stack-demos` repository into the appropriate directory within the `A2A` examples structure.
 
 ```bash
-# Move the Llama Stack agent into the A2A samples
+# Navigate to the target directory within the A2A examples.
 cd A2A/samples/python/agents
+
+# Copy the Llama Stack agent directory.
 cp -r ../../../../llama-stack-demos/demos/a2a_llama_stack .
 ```
 
-Verify that **`a2a_llama_stack/`** now contains:
+After the copy operation, verify that the `A2A/samples/python/agents/a2a_llama_stack/` directory has been created and contains the following files and folders:
+* `__init__.py`
+* `__main__.py`
+* `task_manager.py`
+* `A2AFleet.py`
+* `A2ATool.py`
+* `requirements.txt`
+* `agents/`
+* `cli/`
+* `notebooks/`
 
-- `__init__.py`
-- `__main__.py`
-- `task_manager.py`
-- `agent.py`
+### 4. Install Python Dependencies
 
----
-
-## 4 — Install Python Dependencies
+Navigate into the `a2a_llama_stack` directory (which you just populated) and install its Python package dependencies. Ensure your virtual environment remains active.
 
 ```bash
+# Navigate into the Llama Stack agent directory
 cd a2a_llama_stack
+
+# It is good practice to upgrade pip within the virtual environment
 python -m pip install --upgrade pip
+
+# Install the required packages specified in requirements.txt
 pip install -r requirements.txt
 ```
+*You should now be located in the `A2A/samples/python/agents/a2a_llama_stack` directory.*
 
 ---
 
-## 5 — Set Environment Variables
+## Configuration: Environment Variables
 
-| Variable          | Description                         | Default                   |
-|-------------------|-------------------------------------|---------------------------|
-| `LLAMA_STACK_URL` | Llama Stack server address          | `http://localhost:8321`   |
-| `MODEL_ID`        | Model identifier on Llama Stack     | `llama3.2:3b-instruct-fp16` |
+Your agent requires the network address of your Llama Stack server and the identifier of the AI model to be used. These are configured via environment variables.
 
-**macOS / Linux**
+| Variable          | Description                                     | Default Value               | Example Custom Value        |
+|-------------------|-------------------------------------------------|-----------------------------|-----------------------------|
+| `LLAMA_STACK_URL` | Address of your Llama Stack inference server.   | `http://localhost:8321`     | `http://your-llama-server` |
+| `MODEL_ID`        | Model identifier available on your Llama Stack. | `llama3.2:3b-instruct-fp16` | `your-custom-model-id`      |
 
-```bash
-export LLAMA_STACK_URL=http://localhost:8321
-export MODEL_ID=llama3.2:3b-instruct-fp16
-```
+Set these variables in the terminal session where you plan to launch the agent server (detailed in the subsequent section).
 
-**Windows (PowerShell)**
+* **macOS / Linux:**
+    ```bash
+    export LLAMA_STACK_URL="http://localhost:8321"
+    export MODEL_ID="llama3.2:3b-instruct-fp16"
+    ```
+    *(Adjust these values if your Llama Stack server URL or model ID differs from the defaults.)*
 
-```powershell
-setx LLAMA_STACK_URL "http://localhost:8321"
-setx MODEL_ID "llama3.2:3b-instruct-fp16"
-```
-
----
-
-## 6 — Launch the Agent
-
-```bash
-# Navigate to A2A/samples/python
-cd ../..
-# Run the following python command from A2A/samples/python
-python -m agents.a2a_llama_stack --port 10010
-```
-
-A successful start prints something like:
-
-```
-INFO | Agent listening on 0.0.0.0:10010
-```
+* **Windows (PowerShell):**
+    ```powershell
+    setx LLAMA_STACK_URL "http://localhost:8321"
+    setx MODEL_ID "llama3.2:3b-instruct-fp16"
+    ```
+    *(Modify the values as necessary. Note: After using `setx`, these variables are persistently set for the current user. However, you must open a **new** PowerShell window or restart your current one for these changes to become effective in that session.)*
 
 ---
 
-## 7 — Send Tasks from the CLI Host
+## Running the Application
 
-Open a **new terminal** and run:
+You are now prepared to launch your agent. This process involves two primary stages:
+1.  Launching the agent server(s).
+2.  Executing a client application to send tasks to these server(s).
+
+You can opt for a basic single-agent configuration or a more intricate multi-agent setup.
+
+### Part 1: Launch the Agent Server(s)
+
+The agent server is the core component that listens for and processes incoming A2A tasks.
+
+**Important Considerations:**
+* Ensure your Python virtual environment (`venv`) is **active** in the terminal session used for this step.
+* Confirm that the `LLAMA_STACK_URL` and `MODEL_ID` environment variables are **set** within this same terminal session.
+
+You should currently be in the `A2A/samples/python/agents/a2a_llama_stack` directory (upon completing Step 4 of the Setup Instructions). To launch the agent server module correctly, first navigate to the `A2A/samples/python/` directory:
 
 ```bash
-source venv/bin/activate
-cd A2A/samples/python/hosts/cli
-uv run . --agent http://localhost:10010
+# If you are currently in A2A/samples/python/agents/a2a_llama_stack:
+cd ../../
+# You should now be in the A2A/samples/python/ directory.
 ```
 
-### Built‑in sample tools
+Now, select **one** of the following server configurations:
+
+#### Option A: Basic Setup (Single Agent Server)
+
+This configuration runs a single agent, named `a2a_custom_tools`, which listens on port `10011`. This agent will interface with the Llama Stack for its operational tasks.
+
+```bash
+# Ensure you are in the A2A/samples/python/ directory
+python -m agents.a2a_llama_stack --agent-name a2a_custom_tools --port 10011
+```
+
+#### Option B: Multi-Agent Setup (Multiple Agent Servers)
+
+This setup illustrates a more complex scenario involving three distinct agents: a planner, a tools agent, and a composer, each operating on a separate port.
+
+```bash
+# Ensure you are in the A2A/samples/python/ directory
+
+# Terminal 1: Launch the planner agent
+python -m agents.a2a_llama_stack --agent-name a2a_planner --port 10010
+
+# Terminal 2: Launch the custom tools agent
+# (Open a new terminal window/tab, activate venv, and set environment variables before running)
+python -m agents.a2a_llama_stack --agent-name a2a_custom_tools --port 10011
+
+# Terminal 3: Launch the composer agent
+# (Open another new terminal window/tab, activate venv, and set environment variables before running)
+python -m agents.a2a_llama_stack --agent-name a2a_composer --port 10012
+```
+*For the multi-agent setup (Option B), each `python -m ...` command initiates a server that will occupy its terminal. You will need to open multiple terminal windows/tabs or manage these processes in the background.*
+
+A successful agent server launch will display a confirmation message in the console, similar to:
+```
+INFO | Agent listening on 0.0.0.0:XXXX
+```
+(Where `XXXX` corresponds to the agent's port number, e.g., `10010`, `10011`, or `10012`).
+
+*Keep these agent server terminal(s) running while you proceed to the client setup.*
+
+### Part 2: Send Tasks from the Client
+
+With the agent server(s) operational, you can now use a client application to dispatch tasks. This requires opening a **new terminal window or tab**.
+
+1.  **Activate the virtual environment** in this new terminal:
+    * **macOS / Linux:**
+        ```bash
+        # Navigate to your project root directory where 'venv' is located
+        source venv/bin/activate
+        ```
+    * **Windows (Command Prompt or PowerShell):**
+        ```bash
+        # Navigate to your project root directory where 'venv' is located
+        venv\Scripts\activate
+        ```
+    *(Recall that the `venv` directory was created in your main project folder, which houses the `A2A` and `llama-stack-demos` subdirectories.)*
+
+2.  **Navigate to the client script directory:**
+    The client application is typically executed from the `cli` directory, located within the `a2a_llama_stack` agent's sample code.
+    ```bash
+    # Adjust this path according to your root project directory structure.
+    # Assuming your current directory is the project root (which contains the 'A2A' folder):
+    cd A2A/samples/python/agents/a2a_llama_stack/cli
+    ```
+
+3.  **Run the client application:**
+    The `uv run` command, followed by the specific client script (`basic_client.py` or `multi_agent_client.py`), executes the client. The arguments passed depend on your chosen server setup (Option A or B).
+
+    #### If you used "Option A: Basic Setup" for the agent server:
+    Run the `basic_client.py` script, directing it to the `a2a_custom_tools` agent:
+    ```bash
+    uv run basic_client.py --agent http://localhost:10011
+    ```
+
+    #### If you used "Option B: Multi-Agent Setup" for the agent servers:
+    Run the `multi_agent_client.py` script, providing the network addresses for all three agents. It is crucial that the `a2a_planner` agent (`http://localhost:10010`) is specified first.
+    ```bash
+    uv run multi_agent_client.py --agent http://localhost:10010 --agent http://localhost:10011 --agent http://localhost:10012
+    ```
+
+Upon executing the appropriate `uv run` command, the client will attempt to establish a connection with the agent server(s) and enable task interaction.
+
+---
+
+### Built-in Sample Tools
+
+The custom Llama Stack agent you have deployed includes several sample tools for demonstration:
 
 | Tool            | Description                    |
 |-----------------|--------------------------------|
-| `random_number` | Returns a random integer       |
-| `get_date`      | Returns today’s date           |
+| `random_number` | Returns a random integer.      |
+| `get_date`      | Returns today’s date.          |
+
+You can experiment with invoking these tools via the client interface once it is connected.
 
 ---
 
-### 🎉 Done!
+## 🎉 Congratulations!
 
-Your custom agent is now running and ready to accept A2A tasks.
+Your custom Llama Stack agent should now be running successfully using the Google A2A protocol and be prepared to accept tasks from the client.
+
+Should you encounter any difficulties, please review each step, paying particular attention to:
+* Verification of prerequisites and their versions.
+* Correct activation of the Python virtual environment.
+* Accuracy of directory paths used in `cd`, `cp`, and script execution commands.
+* Proper configuration of environment variables (`LLAMA_STACK_URL`, `MODEL_ID`).
+* Alignment of client commands with the chosen server setup (Basic or Multi-Agent).
+```

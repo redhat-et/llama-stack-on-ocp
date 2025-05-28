@@ -1,48 +1,57 @@
 import os
 import logging
+import importlib
+import click
 
 from llama_stack_client import LlamaStackClient, Agent
-
 from common.server import A2AServer
 from common.types import AgentCard, AgentCapabilities, AgentSkill
 
-from .agent import random_number_tool, date_tool
-from .task_manager import AgentTaskManager, SUPPORTED_CONTENT_TYPES
-
 logging.basicConfig(level=logging.INFO)
 
+def build_server(agent_name: str, host: str, port: int = None):
+    try:
+        config_module_path = f"{__package__}.agents.{agent_name.replace('-', '_')}.config"
+        config_module = importlib.import_module(config_module_path)
+        agent_config_data = config_module.AGENT_CONFIG
+    except ModuleNotFoundError:
+        logging.error(f"Configuration module not found for agent: {agent_name} at {config_module_path}")
+        raise
+    except AttributeError:
+        logging.error(f"AGENT_CONFIG not found in {config_module_path}")
+        raise
 
-def build_server(host: str = "0.0.0.0", port: int = 10010):
-    # 1) instantiate your agent with the required parameters
+    if port is None:
+        port = agent_config_data.get("default_port", 8000)
+
+    agent_params_config = agent_config_data["agent_params"]
+    tools_to_pass = agent_params_config.get("tools", [])
+
     agent = Agent(
-        client=LlamaStackClient(base_url=os.getenv("LLAMA_STACK_URL", "http://localhost:8321")),
-        model=os.getenv("MODEL_ID", "llama3.2:3b-instruct-fp16"),
-        instructions=(
-            "You have access to two tools:\n"
-            "- random_number_tool: generates a random integer between 1 and 100\n"
-            "- date_tool: returns today's date in YYYY-MM-DD format\n"
-            "Use the appropriate tool to answer user queries."
-        ),
-        tools=[random_number_tool, date_tool],
-        max_infer_iters=3,
+        client=LlamaStackClient(base_url=os.getenv("REMOTE_BASE_URL", "http://localhost:8321")),
+        model=os.getenv(agent_params_config["model_env_var"], agent_params_config["default_model"]),
+        instructions=agent_params_config["instructions"],
+        tools=tools_to_pass,
+        max_infer_iters=agent_params_config.get("max_infer_iters", 3),
+        sampling_params=agent_params_config.get("sampling_params", None)
     )
 
-    # 2) wrap it in the A2A TaskManager
-    task_manager = AgentTaskManager(agent=agent, internal_session_id=True)
+    TaskManagerClass = agent_config_data["task_manager_class"]
+    task_manager = TaskManagerClass(agent=agent, internal_session_id=True)
 
-    # 3) advertise your tools as AgentSkills
+    card_params_config = agent_config_data["agent_card_params"]
+    agent_skills = [AgentSkill(**skill_p) for skill_p in card_params_config.get("skills_params", [])]
+    capabilities = AgentCapabilities(**card_params_config.get("capabilities_params", {}))
+
     card = AgentCard(
-        name="Custom Agent",
-        description="Generates random numbers or dates",
+        name=card_params_config["name"],
+        description=card_params_config["description"],
         url=f"http://{host}:{port}/",
-        version="0.1.0",
-        defaultInputModes=["text/plain"],
-        defaultOutputModes=SUPPORTED_CONTENT_TYPES,
-        capabilities=AgentCapabilities(streaming=True),
-        skills=[
-            AgentSkill(id="random_number", name="Random Number Generator"),
-            AgentSkill(id="get_date",      name="Date Provider"),
-        ],
+        version=card_params_config.get("version", "0.1.0"),
+        defaultInputModes=card_params_config.get("default_input_modes", ["text/plain"]),
+        defaultOutputModes=card_params_config.get("default_output_modes", ["text/plain"]),
+        capabilities=capabilities,
+        skills=agent_skills
     )
 
     return A2AServer(
@@ -52,13 +61,26 @@ def build_server(host: str = "0.0.0.0", port: int = 10010):
         port=port,
     )
 
+@click.command()
+@click.option("--agent-name", required=True, help="The name of the agent to run (e.g., a2a_planner, a2a_custom_tools). Corresponds to the directory name.")
+@click.option("--host", default="0.0.0.0", help="Host to bind the server to.")
+@click.option("--port", type=int, default=None, help="Port to bind the server to (overrides agent's default).")
+def main(agent_name, host, port):
+    effective_port = port
+    if port is None:
+        try:
+            config_module_path = f"agents.a2a_llama_stack.agents.{agent_name.replace('-', '_')}.config"
+            config_module = importlib.import_module(config_module_path)
+            effective_port = config_module.AGENT_CONFIG.get("default_port", "config_default")
+        except Exception:
+            effective_port = "unknown_default"
+
+
+    logging.info(f"Attempting to start server for agent: {agent_name} on {host}:{effective_port}")
+    server = build_server(agent_name=agent_name, host=host, port=port)
+    server.start()
+    logging.info(f"Server for agent {agent_name} should be running.")
+
+
 if __name__ == "__main__":
-    import click
-
-    @click.command()
-    @click.option("--host", default="0.0.0.0")
-    @click.option("--port", default=10010, type=int)
-    def main(host, port):
-        build_server(host, port).start()
-
     main()
