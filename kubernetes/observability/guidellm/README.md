@@ -10,6 +10,7 @@ Here's an example to run `guidellm` with `meta-llama/Llama-3.2-3B-Instruct` that
 ### Run evaluation
 
 ```bash
+# Update the claim-name in retriever-job.yaml, accessor-pod.yaml, and guidellm-job.yaml if using a different pvc-name
 oc apply -f pvc.yaml
 oc apply -f guidellm-job.yaml
 ```

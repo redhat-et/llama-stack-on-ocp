@@ -10,7 +10,7 @@ spec:
     image: registry.access.redhat.com/ubi9/ubi
     name: accessor
     volumeMounts:
-    - mountPath: /mnt/output
+    - mountPath: /app/data
       name: output
   volumes:
   - name: output
