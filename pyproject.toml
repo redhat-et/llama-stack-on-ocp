@@ -13,4 +13,5 @@ dependencies = [
     "geocoder>=1.38.1",
     "llama-stack==0.2.7",
     "scipy>=1.15.2",
+    "matplotlib>=3.10.3",
 ]
