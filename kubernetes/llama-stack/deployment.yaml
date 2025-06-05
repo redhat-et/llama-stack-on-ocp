@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
         app: llamastack
+      # uncomment if running otel-collector sidecar for trace collection
+      # see ../observability/README.md for how to run otel-collector
+      #annotations:
+      #  sidecar.opentelemetry.io/inject: llamastack-otelsidecar # <- be sure to add this annotation to the **template.metadata**
     spec:
       volumes:
         - name: run-config-volume
@@ -31,6 +35,11 @@ spec:
           terminationMessagePath: /dev/termination-log
           name: llamastack
           env:
+            # uncomment if running otel-collector sidecar for trace collection
+            #- name: TELEMETRY_SINKS
+            #  value: 'console, sqlite, otel_trace'
+            #- name: OTEL_TRACE_ENDPOINT
+            #  value: http://localhost:4318/v1/traces
             - name: MAX_TOKENS
               value: '128000'
             - name: VLLM_MAX_TOKENS
@@ -65,7 +74,7 @@ spec:
             - name: cache
               mountPath: /.cache
           terminationMessagePolicy: File
-          image: 'quay.io/redhat-et/llama:vllm-0.2.6'
+          image: 'quay.io/redhat-et/llama:vllm-0.2.7'
           args:
             - '--config'
             - /app-config/config.yaml
