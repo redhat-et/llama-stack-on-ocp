@@ -63,24 +63,18 @@ podman push quay.io/<YOUR QUAY.IO USERNAME OR ORG/<IMAGE NAME>
 
 Update the [`deployment.yaml`](https://github.com/opendatahub-io/llama-stack-demos/blob/main/kubernetes/llama-stack/deployment.yaml#L71) file using the image generated above.
 
-## Configmap
-
-A predefined [`configmap`](https://github.com/opendatahub-io/llama-stack-demos/blob/main/kubernetes/llama-stack/configmap.yaml) exists with entirely too many options, but is a placeholder for what can be added. Create the configmap defining your unique settings.
-
-```
-oc create -f llama-stack/configmap.yaml
-```
 
 ## Deployment
 
 To create the Llamastack deployment:
 
 ```
-oc create -f llama-stack/deployment.yaml
-oc create -f llama-stack/pvc.yaml
-oc create -f llama-stack/service.yaml
-oc create -f llama-stack/route.yaml
+oc create --kustomize llama-stack
 ```
+
+## Telemetry (distributed trace collection)
+
+To collect Llama Stack distributed traces, follow the [observability guide](../observability/README.md)
 
 ## Access
 

@@ -1,10 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: observability-hub
 resources:
-- grafana-instance.yaml
 - role.yaml
-- sa-token-secret.yaml
 - route.yaml
-- datasources.yaml
+- grafana-instance.yaml

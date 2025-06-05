@@ -1,8 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: observability-hub
+# Update to where the Llama Stack deployment is running
+namespace: llama-stack
 resources:
 - sa.yaml
 - clusterrole.yaml
-- otel-collector.yaml
+- otel-collector-llamastack-sidecar.yaml

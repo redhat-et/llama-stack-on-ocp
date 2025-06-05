@@ -1,55 +1,51 @@
-# Once this exists, any pod with the template.metadata.annotation below will send metrics
-# to observability-hub:
+# Once this exists, any pod with the template.metadata.annotation below will send traces to otel-collector sidecar container:
 # sidecar.opentelemetry.io/inject: llamastack-otelsidecar
 apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
-  name: llamastack-otelsidecar-example
+  name: llamastack-otelsidecar
 spec:
   observability:
     metrics: {}
   deploymentUpdateStrategy: {}
   config:
+    extensions:
+      bearertokenauth:
+        filename: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+
     exporters:
-      debug: {}
-      otlphttp:
-        # all sidecars can export to the central observability-hub otel-collector, then be
-        # exported to various backends from there (in-cluster, external 3rd party)
-        endpoint: 'http://otel-collector-collector.observability-hub.svc.cluster.local:4318'
+      debug:
+        verbosity: basic
+      # Export the dev tenant traces to a Tempo instance
+      otlphttp/dev:
+        # This assumes a TempoStack in the same namespace as Llama Stack exists
+        endpoint: https://tempo-tempostack-gateway:8080/api/traces/v1/dev
         tls:
-          insecure: true
+          insecure: false
+          ca_file: "/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt"
+        auth:
+          authenticator: bearertokenauth
+        headers:
+          X-Scope-OrgID: "dev"
+
     processors: {}
+
     receivers:
       otlp:
         protocols:
           grpc: {}
           http: {}
     service:
+      extensions:
+      - bearertokenauth
       pipelines:
         traces:
           exporters:
-            - debug
-            - otlphttp
+          - debug
+          - otlphttp/dev
           receivers:
-            - otlp
+          - otlp
       telemetry:
         metrics:
           address: '0.0.0.0:8888'
   mode: sidecar
-  resources: {}
-  podDnsConfig: {}
-  managementState: managed
-  upgradeStrategy: automatic
-  ingress:
-    route: {}
-  daemonSetUpdateStrategy: {}
-  targetAllocator:
-    allocationStrategy: consistent-hashing
-    filterStrategy: relabel-config
-    observability:
-      metrics: {}
-    prometheusCR:
-      scrapeInterval: 30s
-    resources: {}
-  replicas: 1
-  ipFamilyPolicy: SingleStack
