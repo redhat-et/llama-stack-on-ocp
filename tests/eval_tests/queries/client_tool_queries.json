@@ -1,0 +1,2525 @@
+{
+  "queries": [
+    {
+      "query": "What's the sum of 5 and 3?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Add 10.5 and 7.2.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Can you tell me the total of 15 and 20?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "What's 2 plus 2?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Combine 123 and 456.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Calculate the sum of 99 and 1.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Find the total if I have 50 apples and get 25 more.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "What's the result of adding 1.1 and 2.2?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Sum up these numbers: 7 and 13.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Give me the combined value of 1000 and 500.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "What is 8 plus 9?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Add up 3.14 and 2.71.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "If I have 10 and add 5, what do I get?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "Compute the sum of negative 5 and positive 10.",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "What's 0.5 plus 0.25?",
+      "tool_call": "add_two_numbers"
+    },
+    {
+      "query": "What's the difference between 10 and 4?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Subtract 3.1 from 8.7.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Can you tell me what 15 minus 7 is?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "What's 20 reduced by 5?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Take away 10 from 30.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Calculate the remainder if 100 is decreased by 25.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "How much is left if I have 75 items and remove 15?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "What's the result of 9.9 minus 1.1?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Find the difference between 500 and 123.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Give me 100 minus 75.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "What is 12 minus 8?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Subtract 0.75 from 1.5.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "If I start with 20 and take away 7, what's left?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "Compute the difference between -10 and -5.",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "What's 5.0 minus 3.5?",
+      "tool_call": "subtract_two_numbers"
+    },
+    {
+      "query": "What's the product of 6 and 7?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Multiply 4.5 by 2.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Can you tell me what 8 times 9 is?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "What's 11 multiplied by 3?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Calculate 5 times 5.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Find the product of 12 and 10.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "If I have 5 groups of 4, how many do I have in total?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "What's the result of 2.5 times 3.0?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Multiply 100 by 0.5.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Give me 7 multiplied by 6.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "What is 3 times 15?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Compute the product of -4 and 5.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "What's 0.1 times 0.1?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "If a box has 6 items and I have 7 boxes, how many items?",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "Calculate 20 times 5.",
+      "tool_call": "multiply_two_numbers"
+    },
+    {
+      "query": "What's 10 divided by 2?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Divide 15.0 by 3.0.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Can you tell me the quotient of 25 and 5?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "What's 100 split by 10?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Calculate 49 divided by 7.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Find the result of 81 / 9.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "If I share 30 candies among 6 friends, how many does each get?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "What's 7.5 divided by 2.5?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Divide 1 by 4.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Give me 1000 divided by 20.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "What is 60 divided by 5?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Compute 121 divided by 11.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "What's 2.2 divided by 1.1?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "If 50 students are in 5 groups, how many per group?",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "Calculate 0.8 divided by 0.2.",
+      "tool_call": "divide_two_numbers"
+    },
+    {
+      "query": "What is today's date?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Can you tell me the current date?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "What's the date right now?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Please provide today's calendar date.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "What's the date for this very moment?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "When is today?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Tell me the date.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Get me the current system date.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "What day of the month is it today?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Can I get the current date?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Report the date.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "What's the date on the calendar?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Give me today's full date.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Current date please.",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "What is the date right now in YYYY-MM-DD format?",
+      "tool_call": "get_current_date"
+    },
+    {
+      "query": "Say hello to John.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Greet Mary for me.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Can you say hi to David?",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Send a greeting to Sarah.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Please greet Michael.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Say hello to the user named Emily.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Greet Alex.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Can you give a welcome message to Chris?",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Generate a greeting for Jessica.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Please say hello to my friend, Tom.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Greet Liam.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Say hi to Olivia.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Could you greet Noah?",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Create a greeting for Sophia.",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "Hi there, Ben!",
+      "tool_call": "greet_user"
+    },
+    {
+      "query": "What's the length of \"hello\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "How many characters are in the word \"supercalifragilisticexpialidocious\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Tell me the length of this sentence: \"The quick brown fox jumps over the lazy dog.\"",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "What's the character count for \"Python\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "How long is the string \"12345\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Calculate the length of \"a\".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "What is the length of an empty string?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Count the characters in \"Programming\".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Give me the length of \"Tool Calling\".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "How many letters are in \"documentation\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "What's the length of \"Gemini AI\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Character count of \"example\".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "How many characters are in \"Space ship\"?",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Length of \" \".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Determine the length of \"experiment\".",
+      "tool_call": "string_length"
+    },
+    {
+      "query": "Convert \"hello world\" to uppercase.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Make \"python\" all caps.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Can you capitalize \"tool calling\"?",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Transform \"example text\" into uppercase.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Change \"lowercase\" to its uppercase equivalent.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Convert \"programming\" to all capital letters.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Make this sentence uppercase: \"this is a test.\"",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Capitalize \"ai model\".",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "I need \"some text\" in uppercase.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Put \"openai\" in all caps.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Uppercase \"function call\".",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Convert \"mixedCase\" to uppercase.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Make \"uppercase me\" all caps.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Can you convert \"string\" to uppercase?",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "\"markdown\" to uppercase.",
+      "tool_call": "to_uppercase"
+    },
+    {
+      "query": "Convert \"HELLO WORLD\" to lowercase.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Make \"PYTHON\" all small letters.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Can you un-capitalize \"TOOL CALLING\"?",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Transform \"EXAMPLE TEXT\" into lowercase.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Change \"UPPERCASE\" to its lowercase equivalent.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Convert \"PROGRAMMING\" to all lowercase letters.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Make this sentence lowercase: \"THIS IS A TEST.\"",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Lowercase \"AI MODEL\".",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "I need \"SOME TEXT\" in lowercase.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Put \"OPENAI\" in all small letters.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Lowercase \"FUNCTION CALL\".",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Convert \"MixedCase\" to lowercase.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Make \"LOWERCASE ME\" all small letters.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Can you convert \"STRING\" to lowercase?",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "\"MARKDOWN\" to lowercase.",
+      "tool_call": "to_lowercase"
+    },
+    {
+      "query": "Reverse the string \"hello\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Spell \"world\" backwards.",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Can you flip \"Python\"?",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Invert the order of characters in \"example\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Reverse the word \"level\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Spell \"madam\" backwards.",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "What's \"stressed\" spelled in reverse?",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Reverse \"tool\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Can you reverse \"racecar\"?",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "What's \"computer\" backwards?",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Flip the text \"programming\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Reverse \"openai\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Spell \"tooling\" in reverse.",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "What's \"emordnilap\" reversed?",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Invert \"string_reverse\".",
+      "tool_call": "reverse_string"
+    },
+    {
+      "query": "Is 4 an even number?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Check if 7 is even.",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 100 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 0 an even number?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Determine if 13 is even.",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Check for evenness: 24.",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is negative 6 an even number?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 99 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 2 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Check if 1001 is even.",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 1234567890 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is -1 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 88 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Check if 5 is even.",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 42 even?",
+      "tool_call": "is_even"
+    },
+    {
+      "query": "Is 3 an odd number?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Check if 8 is odd.",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 99 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 1 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Determine if 12 is odd.",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Check for oddness: 27.",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is negative 5 an odd number?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 100 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 7 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Check if 2000 is odd.",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 987654321 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "-2 is odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 77 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Check if 4 is odd.",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "Is 21 odd?",
+      "tool_call": "is_odd"
+    },
+    {
+      "query": "What's the maximum of 5 and 10?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Find the larger number between 3.14 and 2.71.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Which is greater: 100 or 99?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "What's the biggest of 20 and 5?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Get the maximum value from -5 and -10.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Compare 12 and 15, and give me the higher one.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "What's the max of 0 and 1?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Find the larger of 7.8 and 7.9.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Which number is bigger: 500 or 501?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "What's the maximum between 1.0 and 1.0?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Maximize these two: 88 and 77.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Which is the greater number, 45 or 54?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Find the maximum of -1 and 0.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "What's the greater value of 10.5 and 10.6?",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "Max of 1000 and 999.",
+      "tool_call": "get_max_of_two"
+    },
+    {
+      "query": "What's the minimum of 5 and 10?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Find the smaller number between 3.14 and 2.71.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Which is lesser: 100 or 99?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "What's the smallest of 20 and 5?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Get the minimum value from -5 and -10.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Compare 12 and 15, and give me the lower one.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "What's the min of 0 and 1?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Find the smaller of 7.8 and 7.9.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Which number is smaller: 500 or 501?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "What's the minimum between 1.0 and 1.0?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Minimize these two: 88 and 77.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Which is the lesser number, 45 or 54?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Find the minimum of -1 and 0.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "What's the smaller value of 10.5 and 10.6?",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Min of 1000 and 999.",
+      "tool_call": "get_min_of_two"
+    },
+    {
+      "query": "Combine \"hello\" and \"world\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Join \"first\" and \"last\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Put \"Py\" and \"thon\" together.",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Concatenate \"tool\" and \"calling\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Append \"A\" to \"B\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Join \"programming\" with \"language\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Combine the words \"red\" and \"hat\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "What do you get if you join \"Gemini\" and \"AI\"?",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Merge \"data\" and \"science\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Connect \"quick\" and \"brown\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Join \"user\" and \"input\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Concatenate \"function\" and \"parameters\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Put \"string\" and \"manipulation\" together.",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Combine \"abc\" with \"def\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Join \"hello\" and \" there\".",
+      "tool_call": "concatenate_strings"
+    },
+    {
+      "query": "Convert 0 Celsius to Fahrenheit.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "What is 25 degrees Celsius in Fahrenheit?",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Transform 100 C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Convert 37 Celsius to Fahrenheit.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "What's -10 Celsius in Fahrenheit?",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Change 20 degrees C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Convert 0 degrees C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "How many Fahrenheit degrees are in 5 Celsius?",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Celsius to Fahrenheit for 15.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Convert 30 degrees C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "What is -40 C in F?",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Transform 2.5 C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Convert 0.0 Celsius to Fahrenheit.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "What's the Fahrenheit equivalent of 22 C?",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Change 10 C to F.",
+      "tool_call": "convert_celsius_to_fahrenheit"
+    },
+    {
+      "query": "Convert 32 Fahrenheit to Celsius.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "What is 212 degrees Fahrenheit in Celsius?",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Transform 68 F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Convert 98.6 Fahrenheit to Celsius.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "What's -4 F in Celsius?",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Change 50 degrees F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Convert 0 degrees F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "How many Celsius degrees are in 59 Fahrenheit?",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Fahrenheit to Celsius for 77.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Convert 86 degrees F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "What is -40 F in C?",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Transform 41 F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Convert 100.0 Fahrenheit to Celsius.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "What's the Celsius equivalent of 70 F?",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Change 20 F to C.",
+      "tool_call": "convert_fahrenheit_to_celsius"
+    },
+    {
+      "query": "Is \"madam\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Check if \"racecar\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"level\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"A man, a plan, a canal: Panama.\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Determine if \"hello\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Check if \"noon\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"Was it a car or a cat I saw?\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"python\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"rotor\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Check if \"tool\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"Madam In Eden, I'm Adam\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"top spot\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Determine if \"nope\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Is \"abba\" a palindrome?",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "Check if \"12321\" is a palindrome.",
+      "tool_call": "is_palindrome"
+    },
+    {
+      "query": "What is the square root of 9?",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Calculate the square root of 25.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Find the sqrt of 100.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "What's the square root of 2?",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Compute the square root of 49.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Find the square root of 0.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "What is the square root of 1?",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Calculate the square root of 144.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Determine the sqrt of 64.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "What's the square root of 1.21?",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Square root of 16.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Compute the square root of 81.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Find the square root of 0.25.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "What is the square root of 10.24?",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "Get the sqrt of 36.",
+      "tool_call": "calculate_square_root"
+    },
+    {
+      "query": "What is 2 to the power of 3?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Calculate 5 raised to the exponent of 2.",
+      "tool_call": "power"
+    },
+    {
+      "query": "What's 10 to the power of 4?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Compute 3 to the power of 0.",
+      "tool_call": "power"
+    },
+    {
+      "query": "Find 7 raised to the power of 1.",
+      "tool_call": "power"
+    },
+    {
+      "query": "What is 2 to the power of 0.5?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Calculate 4 to the power of -1.",
+      "tool_call": "power"
+    },
+    {
+      "query": "What's 10 raised to the power of -2?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Compute 9 to the power of 0.5.",
+      "tool_call": "power"
+    },
+    {
+      "query": "Find 1 to the power of 100.",
+      "tool_call": "power"
+    },
+    {
+      "query": "What is 0 to the power of 5?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Calculate 2.5 to the power of 2.",
+      "tool_call": "power"
+    },
+    {
+      "query": "What's 6 raised to the power of 3?",
+      "tool_call": "power"
+    },
+    {
+      "query": "Compute 100 to the power of 0.5.",
+      "tool_call": "power"
+    },
+    {
+      "query": "Find 3 to the power of 3.",
+      "tool_call": "power"
+    },
+
+    {
+      "query": "What day of the week was January 1, 2023?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Find the day of the week for 2024-07-15.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What weekday is 1999-12-31?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Tell me the day of the week for today's date.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What day is 2025-01-01?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Day of the week for 1985-10-26?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What's the weekday of 2000-02-29?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Determine the day of the week for 2023-11-23.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Which day was 1776-07-04?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What day of the week is 2026-03-08?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Tell me the day name for 2021-09-01.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What's the weekday for 2020-01-01?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Day of week for 2025-05-29.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Find out the day of the week for 1990-06-01.",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "What day is it on 2024-12-25?",
+      "tool_call": "get_day_of_week"
+    },
+    {
+      "query": "Is \"test@example.com\" a valid email?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Check if \"invalid-email\" is a valid email address.",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Validate this email: \"user.name+tag@domain.co.uk\".",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Is \"@missingusername.com\" a proper email format?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Verify if \"another@example\" is a valid email.",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Does \"my_email@sub.domain.org\" look like a valid email?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Check if \"email@.com\" is valid.",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Is \"email@domain..com\" valid?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Validate \"abc@def.gh\".",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Is \"user@domain\" a valid email?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Does \"a@b.c\" pass email validation?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Check if \"email@longdomainname.com\" is a valid email address.",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Is \"email.with.dots@domain.com\" valid?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Validate \"no_at_sign.com\".",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "Is \"email@domain.com.\" valid?",
+      "tool_call": "email_validator"
+    },
+    {
+      "query": "How many words are in \"hello world\"?",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Count the words in \"The quick brown fox.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "How many words are there in \"one\"?",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Word count for \"This is a test sentence.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Count words in an empty string.",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "How many words in \"   leading and trailing spaces   \"?",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Tell me the number of words in \"Tool calling example.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Words in \"Python programming is fun.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Count words: \"one two three four five.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "How many words in \"single_word_with_underscores\"?",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Word count of \"A B C D E F G.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Count the words in \"  multiple   spaces   between   words  .\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "How many words in \".\"?",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Words in \"Hello, how are you?\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "Count words in \"This has five words.\"",
+      "tool_call": "count_words"
+    },
+    {
+      "query": "What's the average of 10 and 20?",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Calculate the mean of 5.5 and 10.5.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Find the average of 0 and 100.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "What's the average of -5 and 5?",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Average 2 and 4.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Compute the average of 1.0 and 2.0.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "What is the average of 7 and 7?",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Find the average of 123 and 456.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Calculate the mean of 0.1 and 0.2.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "What's the average for 99 and 1?",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Average these two numbers: 1000 and 2000.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Compute the average of -10 and -20.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "What is the average of 3.14 and 2.71?",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Find the average of 60 and 80.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Average 150 and 250.",
+      "tool_call": "average_two_numbers"
+    },
+    {
+      "query": "Remove all whitespace from \"hello world\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Strip spaces from \"  example text  \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove whitespace from \"Py thon\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Clean \"tool   calling\" by removing all spaces.",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove spaces from \"a b c d e f g\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Get rid of all whitespace in \"This is a test.\"",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Process \" string with newlines \n and tabs \t \" to remove all whitespace.",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove spaces from \" no space \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Strip all whitespace characters from \"   many    spaces   \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Eliminate spaces from \"singleword\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove whitespace from \"  \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Clean this string: \"  a  b  c  \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove all blanks from \"text with blanks\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Strip whitespace from \" leading_trailing_and_in_between \".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Remove spaces from \"test1 2 3\".",
+      "tool_call": "remove_whitespace"
+    },
+    {
+      "query": "Convert 0 Celsius to Kelvin.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "What is 25 degrees Celsius in Kelvin?",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Transform 100 C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Convert -273.15 Celsius to Kelvin.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "What's 20 C in Kelvin?",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Change 37 degrees C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Convert 0 degrees C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "How many Kelvin degrees are in 5 Celsius?",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Celsius to Kelvin for 15.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Convert 30 degrees C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "What is -40 C in K?",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Transform 2.5 C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Convert 0.0 Celsius to Kelvin.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "What's the Kelvin equivalent of 22 C?",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Change 10 C to K.",
+      "tool_call": "convert_celsius_to_kelvin"
+    },
+    {
+      "query": "Convert 32 Fahrenheit to Kelvin.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "What is 212 degrees Fahrenheit in Kelvin?",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Transform 68 F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Convert 98.6 Fahrenheit to Kelvin.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "What's -4 F in Kelvin?",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Change 50 degrees F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Convert 0 degrees F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "How many Kelvin degrees are in 59 Fahrenheit?",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Fahrenheit to Kelvin for 77.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Convert 86 degrees F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "What is -40 F in K?",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Transform 41 F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Convert 100.0 Fahrenheit to Kelvin.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "What's the Kelvin equivalent of 70 F?",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Change 20 F to K.",
+      "tool_call": "convert_fahrenheit_to_kelvin"
+    },
+    {
+      "query": "Get the substring of \"hello world\" from index 0 to 5.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Extract text from \"Python programming\" starting at index 7 and ending at 18.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Give me the substring of \"example\" from 0 to 3.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "From \"tool calling\", extract from index 5 up to 12.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Get part of a string: \"abcdefgh\", from 2 to 6.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Extract the characters from index 1 to 4 of \"testing\".",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "What's the substring of \"longstring\" from 0 to 4?",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Get the text from \"index test\" starting at 6 and ending at 10.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Substring of \"openai\" from 0 to 2.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Extract \"hello\" from \"say hello world\" using indices 4 and 9.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Give me the substring of \"123456789\" from 3 to 6.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "From \"functionality\", get the part from index 0 to 8.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Extract text from \"documentation\" from index 0 to 4.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Substring of \"abcdef\" from 1 to 5.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Get the part of \"developer\" from index 2 to 5.",
+      "tool_call": "get_substring"
+    },
+    {
+      "query": "Round 3.14159 to 2 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 10.789 to 1 decimal place.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Truncate 5.678 to 0 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 99.999 to 2 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 0.12345 to 3 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 7.0 to 1 decimal place.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 1.5 to 0 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 123.456 to 2 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 0.99 to 0 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round -3.7 to 0 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 2.222 to 1 decimal place.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 1.005 to 2 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 12.3456 to 3 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 5.55 to 1 decimal place.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Round 0.0001 to 2 decimal places.",
+      "tool_call": "round_number"
+    },
+    {
+      "query": "Is 2024 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Check if 2000 is a leap year.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 1900 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Determine if 2023 is a leap year.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 2028 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Check for leap year status: 1600.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 2100 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 400 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Check if 2012 is a leap year.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 1996 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Determine if 1800 was a leap year.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 2020 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Check if 2004 is a leap year.",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 2025 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Is 1988 a leap year?",
+      "tool_call": "is_leap_year"
+    },
+    {
+      "query": "Generate a random integer between 1 and 10.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Give me a random number from 100 to 200.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Generate a random integer between -5 and 5.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Pick a random number between 1 and 1.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Random number between 0 and 0.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Generate a random int from 50 to 100.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Provide a random integer between 1000 and 5000.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Random number between 1 and 2.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Generate a random integer from -10 to -1.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Give me a random number from 7 to 7.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Generate a random integer between 1 and 3.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Pick a random integer from 0 to 10.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Generate random number between 10 and 15.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Random integer from 1 to 100.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "Give me a random integer between 20 and 30.",
+      "tool_call": "generate_random_integer"
+    },
+    {
+      "query": "What's the file extension of \"document.pdf\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Extract the extension from \"image.jpeg\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "What's the file extension for \"archive.tar.gz\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Get the extension of \"myfile.txt\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Filename \"report\" - what's the extension?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Extract extension from \"program.py\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "What's the extension of \"data.csv\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "File extension for \"index.html\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Give me the extension of \"document.docx\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "What's the file type of \"script.js\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Extension of \"song.mp3\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "What's the extension of \"presentation.pptx\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Extract the extension from \"video.mp4\".",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Filename \"archive.zip\". What's its extension?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "What's the extension of \"README.md\"?",
+      "tool_call": "get_file_extension"
+    },
+    {
+      "query": "Replace \"world\" with \"there\" in \"hello world\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Change \"apple\" to \"orange\" in \"I like apple pie.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Replace \"old\" with \"new\" in \"This is an old string.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Find and replace \"Python\" with \"Java\" in \"I love Python programming.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "In \"banana banana banana\", replace \"banana\" with \"apple\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Change all occurrences of \"test\" to \"example\" in \"this is a test test.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Replace \"color\" with \"colour\" in \"My favorite color is blue.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Substitute \"\" with \" \" in \"nowhitespace\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Replace \"1\" with \"one\" in \"number 1 string\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Change \"cat\" to \"dog\" in \"The cat sat on the mat.\"",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Replace substring \"abc\" with \"xyz\" in \"abc_def_abc\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "In \"Mississippi\", replace \"ss\" with \"zz\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Replace \"Hi\" with \"Hello\" in \"Hi there!\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Change \"A\" to \"Z\" in \"ABCDEFG\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Substitute \"foo\" with \"bar\" in \"foobarfoo\".",
+      "tool_call": "replace_substring"
+    },
+    {
+      "query": "Is 7 a prime number?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Check if 10 is prime.",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 2 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 1 a prime number?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Determine if 13 is prime.",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Check for primality: 4.",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 17 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 0 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 29 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Check if 9 is prime.",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 53 a prime number?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 22 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Check if 11 is prime.",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 101 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Is 3 prime?",
+      "tool_call": "is_prime"
+    },
+    {
+      "query": "Calculate BMI for weight 70 kg and height 1.75 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "What is the BMI if someone is 60 kg and 1.6 meters tall?",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Compute BMI for 85 kg and 1.8 meters.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Find the BMI for a person weighing 75 kg and 1.70 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "BMI for 55 kg and 1.55 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Calculate the Body Mass Index for 90 kg and 1.9 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "What's the BMI for 68 kg and 1.68 m?",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Determine BMI for 100 kg and 2.0 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "BMI for 63 kg and 1.65 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Calculate BMI using weight 72.5 kg and height 1.78 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "What is the BMI of 80 kg and 1.7 m?",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Compute BMI for a weight of 50 kg and height of 1.6 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Find the BMI for 78 kg and 1.72 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "BMI for 65 kg and 1.63 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Calculate BMI for 95 kg and 1.85 m.",
+      "tool_call": "calculate_bmi"
+    },
+    {
+      "query": "Convert 10 kilograms to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "How many pounds are in 5 kg?",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Transform 1 kg to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Convert 0 kg to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "What's 2.5 kilograms in pounds?",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Change 100 kg to lbs.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Convert 20 kilograms to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Kilograms to pounds for 75.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "What's the weight in pounds of 15 kg?",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Convert 50 kilograms to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "How much is 0.5 kg in lbs?",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Transform 3.14 kg to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Convert 88 kilograms to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "What are 500 kg in lbs?",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Change 12 kg to pounds.",
+      "tool_call": "convert_kilograms_to_pounds"
+    },
+    {
+      "query": "Convert 20 pounds to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "How many kg are in 10 lbs?",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Transform 2.20462 pounds to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Convert 0 lbs to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "What's 5 pounds in kilograms?",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Change 220 lbs to kg.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Convert 40 pounds to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Pounds to kilograms for 150.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "What's the weight in kg of 30 lbs?",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Convert 110 pounds to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "How much is 1 lb in kg?",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Transform 6.61386 lbs to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Convert 198 pounds to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "What are 1000 lbs in kg?",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Change 25 lbs to kilograms.",
+      "tool_call": "convert_pounds_to_kilograms"
+    },
+    {
+      "query": "Convert 10 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "How many feet are in 5 meters?",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Transform 1 meter to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Convert 0 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "What's 2.5 meters in feet?",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Change 100 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Convert 20 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Meters to feet for 75.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "What's the length in feet of 15 meters?",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Convert 50 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "How much is 0.5 meter in feet?",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Transform 3.14 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Convert 88 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "What are 500 meters in feet?",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Change 12 meters to feet.",
+      "tool_call": "convert_meters_to_feet"
+    },
+    {
+      "query": "Convert 30 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "How many meters are in 10 feet?",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Transform 3.28084 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Convert 0 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "What's 5 feet in meters?",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Change 100 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Convert 60 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Feet to meters for 25.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "What's the length in meters of 15 feet?",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Convert 50 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "How much is 1 foot in meters?",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Transform 9.84252 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Convert 200 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "What are 1000 feet in meters?",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Change 12 feet to meters.",
+      "tool_call": "convert_feet_to_meters"
+    },
+    {
+      "query": "Is \"HelloWorld123\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Check if \"Hello World\" is alphanumeric.",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"Python_3\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"12345\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Determine if \"abc\" is alphanumeric.",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Check for alphanumeric status: \"!@#$\".",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"text with spaces\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"num123\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Check if \"alpha&numeric\" is alphanumeric.",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"_underscore\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"MiXeDcAsE1\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Check if \"emoji😊\" is alphanumeric.",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"0xFF\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "Is \"validstring123\" alphanumeric?",
+      "tool_call": "is_alphanumeric"
+    },
+    {
+      "query": "URL-encode \"hello world\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"param=value with spaces\" for a URL.",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL encode \"https://example.com?query=tool calling\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode this text for a URL: \"user_id=123&name=John Doe\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL-encode \"special characters !@#$%\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"a/b c d\" for URL.",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "What's the URL encoding of \"data with spaces and /\"?",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL encode \"?\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"query string example\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Perform URL encoding on \"foo bar baz\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"1+2=3\" for a URL.",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL encode \"日本語\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"a?b=c&d\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL-encode \"/path/to/file.txt\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "Encode \"spaces   between   words\".",
+      "tool_call": "url_encode"
+    },
+    {
+      "query": "URL-decode \"hello%20world\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"%245%25\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "URL decode \"param%3Dvalue%20with%20spaces\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode this URL text: \"https%3A%2F%2Fexample.com%3Fquery%3Dtool%20calling\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "URL-decode \"special%20characters%20%21%40%23%24%25\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"a%2Fb%20c%20d\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "What's the URL decoding of \"data%20with%20spaces%20and%20%2F\"?",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "URL decode \"%3F\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"query%20string%20example\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Perform URL decoding on \"foo%20bar%20baz\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"1%2B2%3D3\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "URL-decode \"%E6%97%A5%E6%9C%AC%E8%AA%9E\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"a%3Fb%3Dc%26d\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "URL-decode \"%2Fpath%2Fto%2Ffile.txt\".",
+      "tool_call": "url_decode"
+    },
+    {
+      "query": "Decode \"spaces%20%20%20between%20%20%20words\".",
+      "tool_call": "url_decode"
+    }
+  ]
+}
