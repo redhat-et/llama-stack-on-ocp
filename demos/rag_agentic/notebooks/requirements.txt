@@ -1,3 +1,4 @@
 llama-stack==0.2.7
+llama-stack-client==0.2.7
 geocoder
 python-dotenv
