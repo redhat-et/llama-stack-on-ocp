@@ -1,14 +1,18 @@
+import argparse
 import os
 import json
 import logging
 import time
+from llama_stack_client.lib.agents.client_tool import ClientTool
 import utils
 from typing import Dict, List, Any, Optional, Union
 from dotenv import load_dotenv
 from llama_stack_client import LlamaStackClient
 from llama_stack_client.lib.agents.agent import Agent
-from tools import tools
+from tools import tools, tools_only_params, tools_no_extra_tags, tools_bad_function_names
 
+# Max client tools llama3.2:3B can handle
+TOOL_LIMIT = 32
 # Load environment variables
 load_dotenv()
 
@@ -224,46 +228,19 @@ def run_mcp_test(server_type, model, query_obj, llama_client, logger):
 
         return False
 
-def run_client_tool_test(model, query_obj, llama_client, logger):
+def run_client_tool_test(model, query_obj, client_tool_module, llama_client, logger):
     """Run a single test for a specific model and query."""
     query_id = get_query_id(query_obj)
     prompt = query_obj['query']
     expected_tool_call = query_obj['tool_call']
 
-    tool_list = [
-        tools.add_two_numbers,
-        tools.subtract_two_numbers,
-        tools.multiply_two_numbers,
-        tools.divide_two_numbers,
-        tools.get_current_date,
-        tools.greet_user,
-        tools.string_length,
-        tools.to_uppercase,
-        tools.to_lowercase,
-        tools.reverse_string,
-        tools.is_even,
-        tools.is_odd,
-        tools.get_max_of_two,
-        tools.get_min_of_two,
-        tools.concatenate_strings,
-        tools.is_palindrome,
-        tools.calculate_square_root,
-        tools.power,
-        tools.get_day_of_week,
-        tools.email_validator,
-        tools.count_words,
-        tools.average_two_numbers,
-        tools.remove_whitespace,
-        tools.convert_celsius_to_fahrenheit,
-        tools.convert_fahrenheit_to_celsius,
-        tools.convert_celsius_to_kelvin,
-        tools.convert_fahrenheit_to_kelvin,
-        tools.get_substring,
-        tools.round_number,
-        tools.is_leap_year,
-        tools.generate_random_integer,
-        tools.get_file_extension,
-    ]
+    tool_list = []
+    for name in dir(client_tool_module):
+        if len(tool_list) >= TOOL_LIMIT:
+            break
+        attribute = getattr(client_tool_module, name)
+        if isinstance(attribute, ClientTool):
+            tool_list.append(attribute)
 
     logger.info(f"Testing query '{query_id}' with model {model}")
     logger.info(f"Query: {prompt[:50]}...")
@@ -349,8 +326,42 @@ def main():
 
     # Get server configurations
     server_configs = get_server_configs()
-    client_tool_queries = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                                       "queries/", "client_tool_queries.json")
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--functions",
+        type=str,
+        required=False,
+        help="Client tool test variation",
+    )
+
+    args = parser.parse_args()
+
+    client_tool_module_map = {
+        "tools/tools.py": tools,
+        "tools/tools_bad_function_names.py": tools_bad_function_names,
+        "tools/tools_no_extra_tags.py": tools_no_extra_tags,
+        "tools/tools_only_params.py": tools_only_params
+    }
+
+    selected_client_tool_module = None
+    if args.functions:
+        if args.functions in client_tool_module_map:
+            selected_client_tool_module = client_tool_module_map[args.functions]
+            logger.info(f"Successfully imported functions from {args.functions}")
+        else:
+            logger.error(f"Invalid function name: {args.functions}")
+            return
+    else:
+        logger.info("No --functions argument provided. Using tools/tools.py as default.")
+        selected_client_tool_module = tools
+
+    if args.functions == "tools/tools_bad_function_names.py":
+        client_tool_queries = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                           "queries/", "client_tool_queries_bad_functions.json")
+    else:
+        client_tool_queries = os.path.join(os.path.dirname(os.path.realpath(__file__)),
+                                           "queries/", "client_tool_queries.json")
 
     # Track statistics
     total_tests = 0
@@ -387,7 +398,7 @@ def main():
 
             for query_obj in queries:
                 total_tests += 1
-                success = run_client_tool_test(model, query_obj, llama_client, logger)
+                success = run_client_tool_test(model, query_obj, selected_client_tool_module, llama_client, logger)
                 if success:
                     successful_tests += 1
 
