@@ -6,7 +6,6 @@ def random_number_tool() -> int:
     """
     Generate a random integer between 1 and 100.
     """
-    print("\n\nGenerating a random number...\n\n")
     return random.randint(1, 100)
 
 
