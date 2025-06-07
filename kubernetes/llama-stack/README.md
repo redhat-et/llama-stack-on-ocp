@@ -82,6 +82,10 @@ oc create -f llama-stack/service.yaml
 oc create -f llama-stack/route.yaml
 ```
 
+## Telemetry (distributed trace collection)
+
+To collect Llama Stack distributed traces, follow the [observability guide](../observability/README.md)
+
 ## Access
 
 This deployment isn't exposed so depending on where you need to access it from outside the cluster, expose it accordingly.

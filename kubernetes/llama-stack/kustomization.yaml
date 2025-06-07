@@ -5,6 +5,7 @@ resources:
   - pvc.yaml
   - route.yaml
   - service.yaml
+  # uncomment for trace collection with otel-collector sidecar
   # - otel-collector-sidecar.yaml
 
 generatorOptions:
