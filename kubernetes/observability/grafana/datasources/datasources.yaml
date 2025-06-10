@@ -5,7 +5,7 @@ metadata:
 spec:
   instanceSelector:
     matchLabels:
-      dashboards: grafana   # This label matches the grafana Grafana instance
+      dashboards: grafana
   datasource:
     name: prometheus
     access: proxy
@@ -39,8 +39,8 @@ spec:
     access: proxy
     editable: true
     type: tempo
-    # This is specific to "observability-hub" namespace. If running tempostack elsewhere, need to update
-    url: "https://tempo-tempostack-gateway.observability-hub.svc.cluster.local:8081/api/traces/v1/dev/tempo"
+    # This is specific to "llama-stack" namespace. If running tempostack elsewhere, need to update
+    url: "https://tempo-tempostack-gateway.llama-stack.svc.cluster.local:8081/api/traces/v1/dev/tempo"
     isDefault: false
     secureJsonData:
       "httpHeaderValue1": "Bearer ${token}"
