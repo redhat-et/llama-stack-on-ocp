@@ -7,6 +7,7 @@ spec:
     spec:
       initContainers:
       - name: repo-clone
+        image: alpine/git:latest
         command:
         - /bin/sh
         - -c
@@ -24,3 +25,6 @@ spec:
           cp -r /tmp/repo/demos/rag_agentic/src/client_tools.py /workspace/src/
           cp -r /tmp/repo/.env.example /workspace/.env
           echo "Notebook files copied successfully!"
+        volumeMounts:
+        - name: lab-storage
+          mountPath: /workspace
